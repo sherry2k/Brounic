@@ -41,11 +41,6 @@
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
   }
-  /* Anchor targets clear the fixed header */
-  section[id],
-  div[id] {
-    scroll-margin-top: 80px;
-  }
   html.lenis,
   html.lenis body {
     height: auto;
@@ -63,7 +58,9 @@
     font-family: var(--font-sans);
     background: #ffffff;
     color: var(--color-ink-800);
-    overflow-x: hidden;
+    /* `clip` instead of `hidden`: overflow-x hidden on body breaks
+       position:fixed on mobile Chrome/Safari (header scrolls away). */
+    overflow-x: clip;
   }
   ::selection {
     background: var(--color-ember-500);
@@ -210,10 +207,8 @@
   .grid-lines-dark {
     background-image: none !important;
   }
-  /* Kill expensive infinite animations on mobile.
-     `.anim-marquee` is deliberately NOT in this list — a translateX keyframe
-     is GPU-composited and cheap, and the partner strip needs it to read as
-     a live logo carousel. */
+  /* kill the heaviest infinite CSS animations on mobile (large-area repaints).
+     .anim-marquee is deliberately kept — it's a compositor-only transform. */
   .anim-drift,
   .anim-pan,
   .anim-ember,
@@ -227,11 +222,13 @@
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
-  /* cap large radial blurs which trigger huge composite layers */
-  [class*="blur-[1"],
-  [class*="blur-[9"],
-  [class*="blur-2xl"],
-  [class*="blur-3xl"] {
+  /* cap large radial blurs which trigger huge composite layers.
+     :not([class*="backdrop-"]) keeps this from hitting elements that use
+     backdrop-blur utilities (e.g. the fixed header bar). */
+  [class*="blur-[1"]:not([class*="backdrop-"]),
+  [class*="blur-[9"]:not([class*="backdrop-"]),
+  [class*="blur-2xl"]:not([class*="backdrop-"]),
+  [class*="blur-3xl"]:not([class*="backdrop-"]) {
     filter: none !important;
     opacity: 0.35;
   }
