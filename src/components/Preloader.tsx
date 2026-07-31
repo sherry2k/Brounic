@@ -57,8 +57,16 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
               initial={{ scale: 0.86, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="relative"
             >
-              <LogoMark className="h-16 w-16 text-white/80" />
+              {/* soft outer glow so the logo pops on dark */}
+              <span
+                className="pointer-events-none absolute inset-0 -m-4 rounded-3xl bg-ember-500/25 blur-2xl"
+                aria-hidden
+              />
+              <span className="relative flex items-center justify-center rounded-2xl bg-white p-4 shadow-[0_10px_40px_-10px_rgba(244,122,32,0.5)] ring-1 ring-white/20">
+                <LogoMark className="h-16 w-16 text-ink-900" />
+              </span>
             </motion.div>
 
             <motion.div
