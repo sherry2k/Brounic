@@ -103,11 +103,11 @@ export default function About() {
                     <SystemIcon name="shield" className="h-5 w-5" />
                   </span>
                   <div className="font-display text-2xl font-extrabold text-ink-900">
-                    <Counter to={600} suffix="+" />
+                    <Counter to={500} suffix="+" />
                   </div>
                 </div>
                 <div className="mt-2 text-[11px] leading-snug font-medium text-ink-500">
-                  Projects protected across the Emirates since 2011
+                  Projects completed across the Emirates since 2011
                 </div>
               </motion.div>
 
