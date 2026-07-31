@@ -334,7 +334,7 @@ export const WHY = [
   { title: "Quality Installation", body: "Own workforce, no uncontrolled subcontracting, ITP-driven QA.", stat: 0, suffix: " defects" },
   { title: "Latest Technology", body: "Addressable, aspirating, watermist and clean-agent platforms.", stat: 24, suffix: "/7" },
   { title: "AMC Support", body: "Planned preventive maintenance with digital reporting.", stat: 380, suffix: "+ sites" },
-  { title: "Reliable Service", body: "On-time delivery across 1000+ completed projects.", stat: 98, suffix: "% OTD" },
+  { title: "Reliable Service", body: "On-time delivery across 600+ completed projects.", stat: 98, suffix: "% OTD" },
   { title: "Customer Satisfaction", body: "Long-term partnerships built on transparency and trust.", stat: 96, suffix: "% CSAT" },
 ];
 
