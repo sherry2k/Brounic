@@ -253,8 +253,8 @@ export default function About() {
               <div className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full bg-ember-500/8 blur-3xl" />
               <motion.div
                 key={active}
-                initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 className="relative max-w-3xl"
               >

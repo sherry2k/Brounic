@@ -2,7 +2,6 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { PROCESS } from "@/data/content";
 import { Eyebrow, Reveal, SplitText } from "@/lib/ui";
-import { PERF } from "@/lib/perf";
 import { cn } from "@/utils/cn";
 
 export default function Process() {
@@ -41,12 +40,10 @@ export default function Process() {
               style={{ scaleY, originY: 0 }}
               className="h-full w-px bg-gradient-to-b from-ember-400 via-ember-500 to-flame-500"
             />
-            {!PERF.lite && (
-              <motion.span
-                style={{ top: glowY }}
-                className="absolute left-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ember-500/25 blur-2xl"
-              />
-            )}
+            <motion.span
+              style={{ top: glowY }}
+              className="absolute left-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ember-500/25 blur-2xl"
+            />
           </div>
 
           <div className="space-y-6 md:space-y-2">
@@ -73,13 +70,11 @@ export default function Process() {
                     )}
                   >
                     <span className="flex h-2.5 w-2.5 rounded-full bg-gradient-to-br from-ember-400 to-flame-500" />
-                    {!PERF.lite && (
-                      <motion.span
-                        className="absolute inset-0 rounded-full border border-ember-500/40"
-                        animate={{ scale: [1, 1.5], opacity: [0.6, 0] }}
-                        transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.2 }}
-                      />
-                    )}
+                    <motion.span
+                      className="absolute inset-0 rounded-full border border-ember-500/40"
+                      animate={{ scale: [1, 1.5], opacity: [0.6, 0] }}
+                      transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.2 }}
+                    />
                   </span>
 
                   <div className="group relative w-full overflow-hidden rounded-[22px] border border-white/8 bg-white/[0.03] p-6 backdrop-blur-sm transition-all duration-500 hover:border-ember-500/25 hover:bg-white/[0.06]">

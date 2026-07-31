@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { CONTACT } from "@/data/content";
 import { Counter, Reveal } from "@/lib/ui";
-import { PERF } from "@/lib/perf";
 import { ArrowRight, Phone, SystemIcon, WhatsApp } from "./Icons";
 
 export default function Emergency() {
@@ -11,25 +10,16 @@ export default function Emergency() {
         <div className="noise relative mx-auto max-w-[84rem] overflow-hidden rounded-[36px] bg-gradient-to-br from-flame-600 via-flame-500 to-ember-500 p-8 sm:p-12 lg:p-16">
           {/* animated backdrop */}
           <div className="absolute inset-0 opacity-25 grid-lines-dark" />
-          {!PERF.lite ? (
-            <>
-              <motion.div
-                className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-white/20 blur-[90px]"
-                animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
-                transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.div
-                className="pointer-events-none absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-ember-300/25 blur-[100px]"
-                animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
-                transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </>
-          ) : (
-            <>
-              <span className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-white/20 blur-[70px]" />
-              <span className="pointer-events-none absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-ember-300/25 blur-[70px]" />
-            </>
-          )}
+          <motion.div
+            className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 rounded-full bg-white/20 blur-[90px]"
+            animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
+            transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.div
+            className="pointer-events-none absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-ember-300/25 blur-[100px]"
+            animate={{ x: [0, -50, 0], y: [0, -30, 0] }}
+            transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }}
+          />
           <div
             className="pointer-events-none absolute inset-0 opacity-[0.09]"
             style={{

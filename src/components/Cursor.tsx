@@ -1,6 +1,5 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
-import { PERF } from "@/lib/perf";
 
 export default function Cursor() {
   const x = useMotionValue(-100);
@@ -11,8 +10,6 @@ export default function Cursor() {
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    // No custom cursor on touch, reduced motion, or low-power devices.
-    if (PERF.lite || PERF.touch) return;
     if (window.matchMedia("(pointer: fine)").matches) setEnabled(true);
   }, []);
 

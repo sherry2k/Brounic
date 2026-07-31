@@ -29,6 +29,14 @@ It replaces the drawn mark in the **header, mobile menu, preloader, footer and t
 certificate document**. Leaving it `""` keeps the current SVG mark with the
 `BROUNIC GROUP` / `FIRE & SAFETY` two-line lockup.
 
+**Dark-surface handling is automatic:** on black/dark backgrounds (transparent
+hero header, mobile menu, footer) the image gets a white rounded tile behind it
+so a dark-coloured logo stays legible; on the white scrolled header it renders
+plain. On the **loading screen** the logo sits inside a larger white badge framed
+by a thin ember-gradient ring, guaranteeing orange-and-black logos read crisply
+against the near-black preloader. `BRAND.logoHeight` controls the size; on dark
+surfaces it is capped at 34px to fit the header pill.
+
 > Note: because the build inlines everything into one HTML file, a logo in
 > `public/` stays as a separate file next to `index.html`. Keep them together.
 > To make it truly single-file, paste a base64 data-URI into `logoUrl` instead.

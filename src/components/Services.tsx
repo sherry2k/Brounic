@@ -2,7 +2,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { SERVICES, type Service } from "@/data/content";
 import { Eyebrow, Reveal, SplitText } from "@/lib/ui";
-import { PERF } from "@/lib/perf";
 import { ArrowRight, Check, SystemIcon } from "./Icons";
 import { cn } from "@/utils/cn";
 
@@ -17,17 +16,13 @@ function ServiceCard({ s, i }: { s: Service; i: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, delay: (i % 3) * 0.08, ease: [0.16, 1, 0.3, 1] }}
-      onMouseMove={
-        PERF.touch
-          ? undefined
-          : (e) => {
-              const el = ref.current;
-              if (!el) return;
-              const r = el.getBoundingClientRect();
-              el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-              el.style.setProperty("--my", `${e.clientY - r.top}px`);
-            }
-      }
+      onMouseMove={(e) => {
+        const el = ref.current;
+        if (!el) return;
+        const r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+        el.style.setProperty("--my", `${e.clientY - r.top}px`);
+      }}
       data-active={open}
       className={cn(
         "grad-border group relative flex flex-col overflow-hidden rounded-[26px] border p-7 transition-all duration-500",

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import Lenis from "lenis";
 import { motion } from "framer-motion";
-import { PERF } from "@/lib/perf";
 import Preloader from "@/components/Preloader";
 import Cursor from "@/components/Cursor";
 import Nav from "@/components/Nav";
@@ -27,66 +27,50 @@ export default function App() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    // Native anchor scrolling only — much faster on mobile & low-end desktops.
-    // Lenis' per-frame RAF loop was one of the biggest mobile costs.
-    if (PERF.lite) {
-      const onClickNative = (e: MouseEvent) => {
-        const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
-        if (!a) return;
-        const id = a.getAttribute("href");
-        if (!id || id === "#") return;
-        const el = document.querySelector(id);
-        if (!el) return;
-        e.preventDefault();
-        const y = (el as HTMLElement).getBoundingClientRect().top + window.scrollY - 72;
-        window.scrollTo({ top: y, behavior: "smooth" });
-      };
-      document.addEventListener("click", onClickNative);
-      return () => document.removeEventListener("click", onClickNative);
-    }
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Touch devices scroll smoother natively — Lenis is a desktop (wheel) enhancement.
+    const touch = window.matchMedia("(pointer: coarse)").matches;
+    const useLenis = !reduced && !touch;
 
-    let cleanup: (() => void) | undefined;
-    let cancelled = false;
-    // Static import kept (viteSingleFile inlines dynamic imports too, so no
-    // bundle-size win from lazy loading here).
-    import("lenis").then(({ default: Lenis }) => {
-      if (cancelled) return;
-      const lenis = new Lenis({
-        duration: 1.15,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        touchMultiplier: 1.6,
-      });
+    const lenis = useLenis
+      ? new Lenis({
+          duration: 1.15,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          smoothWheel: true,
+        })
+      : null;
 
-      let raf = 0;
+    let raf = 0;
+    if (lenis) {
       const loop = (time: number) => {
         lenis.raf(time);
         raf = requestAnimationFrame(loop);
       };
       raf = requestAnimationFrame(loop);
+    }
 
-      const onClick = (e: MouseEvent) => {
-        const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
-        if (!a) return;
-        const id = a.getAttribute("href");
-        if (!id || id === "#") return;
-        const el = document.querySelector(id);
-        if (!el) return;
-        e.preventDefault();
-        lenis.scrollTo(el as HTMLElement, { offset: id === "#top" ? 0 : -80, duration: 1.35 });
-      };
-      document.addEventListener("click", onClick);
-
-      cleanup = () => {
-        document.removeEventListener("click", onClick);
-        cancelAnimationFrame(raf);
-        lenis.destroy();
-      };
-    });
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute("href");
+      if (!id || id === "#") return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      if (lenis) {
+        lenis.scrollTo(el as HTMLElement, { offset: id === "#top" ? 0 : -88, duration: 1.35 });
+      } else if (id === "#top") {
+        window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+      } else {
+        (el as HTMLElement).scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
+      }
+    };
+    document.addEventListener("click", onClick);
 
     return () => {
-      cancelled = true;
-      cleanup?.();
+      document.removeEventListener("click", onClick);
+      if (raf) cancelAnimationFrame(raf);
+      lenis?.destroy();
     };
   }, []);
 

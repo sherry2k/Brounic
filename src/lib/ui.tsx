@@ -8,7 +8,6 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { PERF } from "@/lib/perf";
 import { cn } from "@/utils/cn";
 
 /* ---------------- Scroll reveal ---------------- */
@@ -25,16 +24,13 @@ export function Reveal({
   className?: string;
   once?: boolean;
 }) {
-  // No blur filter on mobile — it's the #1 GPU cost during scroll.
-  const initial = PERF.lite ? { opacity: 0, y } : { opacity: 0, y, filter: "blur(6px)" };
-  const animate = PERF.lite ? { opacity: 1, y: 0 } : { opacity: 1, y: 0, filter: "blur(0px)" };
   return (
     <motion.div
       className={className}
-      initial={initial}
-      whileInView={animate}
+      initial={{ opacity: 0, y }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once, margin: "-80px" }}
-      transition={{ duration: PERF.lite ? 0.5 : 0.85, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={{ duration: 0.85, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
     </motion.div>
@@ -105,12 +101,6 @@ export function Counter({
 
   useEffect(() => {
     if (!inView) return;
-    // On low-power devices just snap to the final value — RAF loops per counter
-    // add up fast (there are ~30 counters on the page).
-    if (PERF.lite) {
-      setVal(to);
-      return;
-    }
     let raf = 0;
     const start = performance.now();
     const tick = (now: number) => {
@@ -218,7 +208,7 @@ export function useParallax(range = 80): [React.RefObject<HTMLDivElement | null>
   return [ref, smooth];
 }
 
-/* ---------------- 3D tilt card (desktop only) ---------------- */
+/* ---------------- 3D tilt card ---------------- */
 export function Tilt({
   children,
   className,
@@ -233,10 +223,6 @@ export function Tilt({
   const ry = useMotionValue(0);
   const srx = useSpring(rx, { stiffness: 200, damping: 20 });
   const sry = useSpring(ry, { stiffness: 200, damping: 20 });
-
-  if (PERF.touch || PERF.lite) {
-    return <div className={className}>{children}</div>;
-  }
 
   return (
     <motion.div

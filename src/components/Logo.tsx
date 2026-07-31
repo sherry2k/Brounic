@@ -7,22 +7,18 @@ import { cn } from "@/utils/cn";
  *   1. Drop your file into /public          → public/logo.png
  *   2. Set BRAND.logoUrl = "/logo.png"
  * The image then replaces the drawn mark in the header, mobile menu,
- * preloader, footer and the certificate document.
+ * preloader, footer and the certificate document — the wordmark text
+ * ("BROUNIC GROUP / FIRE & SAFETY") always stays beside it.
+ *
+ * On dark surfaces (transparent hero header, mobile menu, footer) the
+ * image automatically gets a white rounded tile behind it so black or
+ * dark logo areas stay fully legible. On light surfaces it renders plain.
  * Transparent PNG or SVG recommended. Leave "" to keep the drawn mark.
  */
 export const LOGO_URL = BRAND.logoUrl;
 
+/** Drawn fallback mark (used when no custom logo file is configured). */
 export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
-  if (LOGO_URL) {
-    return (
-      <img
-        src={LOGO_URL}
-        alt={`${BRAND.name} logo`}
-        className={cn("object-contain", className)}
-        style={{ height: BRAND.logoHeight }}
-      />
-    );
-  }
   return (
     <svg className={className} viewBox="0 0 64 64" fill="none" aria-hidden>
       <defs>
@@ -55,20 +51,34 @@ export function Logo({
   compact = false,
 }: {
   className?: string;
+  /** True when rendered over a dark/black surface */
   dark?: boolean;
   compact?: boolean;
 }) {
   const [first, ...rest] = BRAND.name.split(" ");
 
+  const icon = LOGO_URL ? (
+    <img
+      src={LOGO_URL}
+      alt={`${BRAND.name} logo`}
+      className="w-auto shrink-0 object-contain"
+      style={{ height: dark ? Math.min(BRAND.logoHeight, 34) : BRAND.logoHeight }}
+    />
+  ) : (
+    <LogoMark className={cn("h-9 w-9 shrink-0", dark ? "text-white/85" : "text-ink-900")} />
+  );
+
   return (
     <div className={cn("flex items-center gap-2.5", className)}>
-      <LogoMark
-        className={cn(
-          "shrink-0",
-          LOGO_URL ? "w-auto max-w-[170px]" : "h-9 w-9",
-          dark ? "text-white/85" : "text-ink-900",
-        )}
-      />
+      {/* White tile keeps dark/black logo areas legible on dark surfaces */}
+      {LOGO_URL && dark ? (
+        <span className="flex shrink-0 items-center justify-center rounded-xl bg-white px-3 py-1.5 shadow-[0_2px_12px_rgba(0,0,0,0.3),inset_0_0_0_1px_rgba(255,255,255,0.25)]">
+          {icon}
+        </span>
+      ) : (
+        icon
+      )}
+
       <div className="leading-none">
         <div
           className={cn(
