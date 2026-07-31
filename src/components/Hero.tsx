@@ -175,7 +175,7 @@ export default function Hero() {
             className="mt-7 max-w-2xl text-[15px] leading-relaxed text-white/60 sm:text-lg"
           >
             End-to-end fire protection engineering for the UAE's most demanding environments — delivered to
-            NFPA, British Standards and Civil Defence compliance.
+            NFPA Standards and Civil Defence compliance.
           </motion.p>
 
           <motion.div
