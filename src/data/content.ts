@@ -526,17 +526,19 @@ export const CERTS: Cert[] = [
 
 export const TEAM = [
   {
-    name: "Ahmed Almarar",
+      name: "Ahmed Almarar",
     role: "Chief Executive Officer",
     group: "Leadership",
-    img: px(37605831, 900),
+    img: "/team/ahmed.jpg",
+    focus: "top",
     bio: "Sets the national growth strategy and safeguards Brounic's promise of uncompromised life safety.",
   },
   {
     name: "Farah Al Mubarak",
     role: "General Manager",
     group: "Leadership",
-    img: px(11655430, 900),
+    img: "/team/farah.jpg", 
+    focus: "top",
     bio: "Leads operations, commercial delivery and client partnerships across every emirate.",
   },
 ];
