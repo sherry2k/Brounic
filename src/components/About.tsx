@@ -88,14 +88,7 @@ export default function About() {
                   className="h-[440px] w-full object-cover transition-transform duration-[1400ms] hover:scale-105 sm:h-[520px]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <div className="text-[10px] font-semibold tracking-[0.28em] text-white/50 uppercase">
-                    Command &amp; Control
-                  </div>
-                  <div className="mt-1.5 font-display text-lg font-bold text-white">
-                    Live monitoring across 380+ protected sites
-                  </div>
-                </div>
+               </div>
               </div>
 
               <motion.div
@@ -112,7 +105,7 @@ export default function About() {
                     <SystemIcon name="shield" className="h-5 w-5" />
                   </span>
                   <div className="font-display text-2xl font-extrabold text-ink-900">
-                    <Counter to={1000} suffix="+" />
+                    <Counter to={600} suffix="+" />
                   </div>
                 </div>
                 <div className="mt-2 text-[11px] leading-snug font-medium text-ink-500">
