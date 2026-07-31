@@ -3,14 +3,18 @@
  *  Everything below is wired into the live site.
  * ═══════════════════════════════════════════════════════════════ */
 export const BRAND = {
-  /** Put your logo in /public (e.g. public/logo.png) then set "/logo.png".
-   *  Empty string = keep the built-in drawn Brounic mark. */
   logoUrl: "/logo.png",
   logoHeight: 35,
   name: "BROUNIC GROUP",
   tagline: "FIRE & SAFETY",
   siteUrl: "https://www.brounic.com",
-
+  /** The email where form submissions should be sent. */
+  enquiryEmail: "info@brounic.com",
+  /** Optional Web3Forms Access Key for sending real emails on static sites.
+   *  1. Get a free key at: https://web3forms.com (takes 10 seconds, no sign-up)
+   *  2. Paste the key string below (e.g. "a1b2c3d4-e5f6-...")
+   *  If empty, the form will simulate submission and show the thank-you screen. */
+  web3FormsKey: "",
 };
 
 /**
