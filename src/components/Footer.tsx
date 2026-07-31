@@ -60,7 +60,9 @@ export default function Footer() {
         {/* Newsletter */}
         <div className="grid gap-10 border-b border-white/8 pb-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
-            <Logo dark />
+            <span className="inline-flex rounded-xl bg-white/95 px-3 py-2 shadow-sm">
+              <Logo />
+            </span>
             <p className="mt-6 max-w-md text-[14px] leading-relaxed text-white/45">
               Brounic Group delivers intelligent, economical fire protection solutions that minimise fire risk and
               safeguard lives, property and business continuity across the United Arab Emirates.
