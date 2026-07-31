@@ -229,7 +229,7 @@ export default function Contact() {
               <div className="group relative flex-1 overflow-hidden rounded-[32px] border border-ink-100 shadow-lux">
                 <iframe
                   title="Brounic Group office location — Al Dhafra Region, Abu Dhabi"
-                   src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d646.0108240069251!2d53.73254616837965!3d23.66204024614598!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sae!4v1785520683536!5m2!1sen!2sae" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+                   src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d646.0108240069251!2d53.73254616837965!3d23.66204024614598!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sae!4v1785520683536!5m2!1sen!2sae"
                   className="h-[280px] w-full grayscale transition-all duration-700 group-hover:grayscale-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
