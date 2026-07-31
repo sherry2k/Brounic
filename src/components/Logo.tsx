@@ -12,14 +12,21 @@ import { cn } from "@/utils/cn";
  */
 export const LOGO_URL = BRAND.logoUrl;
 
-export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
+export function LogoMark({
+  className = "h-9 w-9",
+  /** Overrides BRAND.logoHeight for this instance (px). Used by the preloader. */
+  size,
+}: {
+  className?: string;
+  size?: number;
+}) {
   if (LOGO_URL) {
     return (
       <img
         src={LOGO_URL}
         alt={`${BRAND.name} logo`}
-        className={cn("object-contain", className)}
-        style={{ height: BRAND.logoHeight }}
+        className={cn("w-auto object-contain", className)}
+        style={{ height: size ?? BRAND.logoHeight }}
       />
     );
   }
