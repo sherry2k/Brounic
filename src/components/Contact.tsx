@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, type FormEvent } from "react";
-import { CONTACT, SERVICES } from "@/data/content";
+import { CONTACT, SERVICES, BRAND } from "@/data/content";
 import { Eyebrow, Reveal, SplitText } from "@/lib/ui";
 import { ArrowRight, Check, Mail, Phone, Pin, SystemIcon, WhatsApp } from "./Icons";
 
@@ -13,13 +13,62 @@ export default function Contact() {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const submit = (e: FormEvent) => {
+  const submit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+
+    const form = e.currentTarget as HTMLFormElement;
+    const nameEl = form.querySelector("#name") as HTMLInputElement;
+    const companyEl = form.querySelector("#company") as HTMLInputElement;
+    const emailEl = form.querySelector("#email") as HTMLInputElement;
+    const phoneEl = form.querySelector("#phone") as HTMLInputElement;
+    const serviceEl = form.querySelector("#service") as HTMLSelectElement;
+    const messageEl = form.querySelector("#message") as HTMLTextAreaElement;
+
+    // Web3Forms AJAX post payload:
+    const payload = {
+      access_key: BRAND.web3FormsKey,
+      subject: `New Brounic Website Enquiry: ${nameEl.value} (${companyEl.value || "No Company"})`,
+      from_name: "Brounic Website Form",
+      to: BRAND.enquiryEmail,
+      name: nameEl.value,
+      email: emailEl.value,
+      company: companyEl.value || "N/A",
+      phone: phoneEl.value || "N/A",
+      service: serviceEl.value || "N/A",
+      message: messageEl.value,
+    };
+
+    // If no Web3Forms access key is specified, gracefully simulate the post.
+    if (!BRAND.web3FormsKey) {
+      setTimeout(() => {
+        setLoading(false);
+        setSent(true);
+      }, 1000);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+      const data = await response.json();
+      if (data.success) {
+        setSent(true);
+      } else {
+        alert(data.message || "Something went wrong. Please try again or call us.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Enquiry failed to submit. Please check your connection or call us.");
+    } finally {
       setLoading(false);
-      setSent(true);
-    }, 1100);
+    }
   };
 
   return (
@@ -228,8 +277,8 @@ export default function Contact() {
             <Reveal delay={0.16}>
               <div className="group relative flex-1 overflow-hidden rounded-[32px] border border-ink-100 shadow-lux">
                 <iframe
-                  title="Brounic Group office location — Al Dhafra Region, Abu Dhabi"
-                   src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d646.0108240069251!2d53.73254616837965!3d23.66204024614598!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sae!4v1785520683536!5m2!1sen!2sae"
+                  title="Brounic Group head office location — Mussafah, Abu Dhabi"
+                  src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d646.0108240069251!2d53.73254616837965!3d23.66204024614598!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sae!4v1785520683536!5m2!1sen!2sae"
                   className="h-[280px] w-full grayscale transition-all duration-700 group-hover:grayscale-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
