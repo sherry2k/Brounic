@@ -42,7 +42,7 @@ export default function Process() {
             />
             <motion.span
               style={{ top: glowY }}
-              className="absolute left-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-ember-500/25 blur-2xl"
+              className="absolute left-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(244,122,32,0.4),transparent_65%)]"
             />
           </div>
 

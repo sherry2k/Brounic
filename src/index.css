@@ -68,6 +68,15 @@
   section[id] {
     scroll-margin-top: 88px;
   }
+
+  /* Skip layout/paint/decode for off-screen sections — the biggest mobile
+     win on a long page. Certifications is excluded (it uses sticky scroll). */
+  @media (max-width: 1023px) {
+    section[id]:not(#certifications) {
+      content-visibility: auto;
+      contain-intrinsic-size: auto 900px;
+    }
+  }
   h1,
   h2,
   h3,
@@ -328,6 +337,7 @@
 }
 .anim-marquee {
   animation: marquee var(--dur, 42s) linear infinite;
+  will-change: transform;
 }
 .anim-pan {
   background-size: 220% 220%;

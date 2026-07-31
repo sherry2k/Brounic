@@ -105,10 +105,10 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_78%_78%,rgba(232,50,31,0.18),transparent_55%)]" />
       <div className="absolute inset-0 grid-lines-dark opacity-55" />
 
-      {/* Emergency light sweep */}
+      {/* Emergency light sweep — soft radial falloff, no blur filter (compositor-only animation) */}
       <motion.div
-        className="absolute -top-1/4 left-1/2 h-[150%] w-[38vw] -translate-x-1/2 bg-[linear-gradient(180deg,rgba(232,50,31,0.16),transparent_70%)] blur-3xl"
-        animate={{ opacity: [0.25, 0.75, 0.25], rotate: [-9, 9, -9] }}
+        className="absolute -top-1/4 left-1/2 h-[150%] w-[52vw] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(232,50,31,0.2),transparent_62%)]"
+        animate={{ opacity: [0.3, 0.8, 0.3], rotate: [-8, 8, -8] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
       />
 

@@ -53,7 +53,9 @@ export default function Partners() {
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-ink-50 to-transparent sm:w-40" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-ink-50 to-transparent sm:w-40" />
         <Row items={PARTNERS.slice(0, half)} dur="38s" />
-        <Row items={PARTNERS.slice(half)} dur="46s" reverse />
+        <div className="hidden sm:block">
+          <Row items={PARTNERS.slice(half)} dur="46s" reverse />
+        </div>
       </div>
     </section>
   );
