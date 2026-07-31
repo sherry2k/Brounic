@@ -72,7 +72,7 @@ export const NAV = [
 
 export const HERO_STATS = [
   { value: 15, suffix: "+", label: "Years of Experience" },
-  { value: 1000, suffix: "+", label: "Projects Delivered" },
+  { value: 600, suffix: "+", label: "Projects Delivered" },
   { value: 50, suffix: "+", label: "Certified Professionals" },
   { value: 100, suffix: "%", label: "Safety Commitment" },
 ];
