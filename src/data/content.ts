@@ -111,7 +111,7 @@ export const TIMELINE = [
   {
     year: "Today",
     title: "National Leadership",
-    body: "1000+ completed projects, 50+ specialists, and a portfolio spanning towers, plants, hospitals, malls and data centres.",
+    body: "500+ completed projects, 50+ specialists, and a portfolio spanning towers, plants, hospitals, malls and data centres.",
   },
 ];
 
