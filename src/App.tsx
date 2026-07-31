@@ -20,7 +20,7 @@ import Partners from "@/components/Partners";
 import Emergency from "@/components/Emergency";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import Lazy from "@/components/Lazy";
+import Lazy, { mountAllSections } from "@/components/Lazy";
 import { CONTACT } from "@/data/content";
 import { WhatsApp } from "@/components/Icons";
 
@@ -34,13 +34,39 @@ export default function App() {
       const onClickNative = (e: MouseEvent) => {
         const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
         if (!a) return;
-        const id = a.getAttribute("href");
-        if (!id || id === "#") return;
-        const el = document.querySelector(id);
-        if (!el) return;
+        const href = a.getAttribute("href");
+        if (!href || href === "#") return;
         e.preventDefault();
-        const y = (el as HTMLElement).getBoundingClientRect().top + window.scrollY - 72;
-        window.scrollTo({ top: y, behavior: "smooth" });
+
+        if (href === "#top") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+          return;
+        }
+
+        // The mobile menu sets body overflow:hidden; clear it immediately so
+        // the scroll below isn't blocked while the overlay animates out.
+        document.body.style.overflow = "";
+
+        // Lazy sections may not be in the DOM yet — force them all to mount,
+        // then scroll on the next frame once layout has settled.
+        mountAllSections();
+
+        const scrollToTarget = (behavior: ScrollBehavior) => {
+          const el = document.querySelector(href);
+          if (!el) return false;
+          const y = (el as HTMLElement).getBoundingClientRect().top + window.scrollY - 72;
+          window.scrollTo({ top: y, behavior });
+          return true;
+        };
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            scrollToTarget("smooth");
+            // Sections that just mounted change the page height, so correct
+            // the final position once images/layout have settled.
+            setTimeout(() => scrollToTarget("auto"), 420);
+          });
+        });
       };
       document.addEventListener("click", onClickNative);
       return () => document.removeEventListener("click", onClickNative);
@@ -117,46 +143,46 @@ export default function App() {
 
         {/* Everything below gets lazy-mounted on mobile via IntersectionObserver.
             On desktop `disabled` short-circuits to plain rendering. */}
-        <Lazy disabled={!PERF.lite} minHeight={900}>
+        <Lazy id="about" disabled={!PERF.lite} minHeight={900}>
           <About />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={1600}>
+        <Lazy id="services" disabled={!PERF.lite} minHeight={1600}>
           <Services />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={900}>
+        <Lazy id="systems" disabled={!PERF.lite} minHeight={900}>
           <Showcase />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={900}>
+        <Lazy id="industries" disabled={!PERF.lite} minHeight={900}>
           <Industries />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={1400}>
+        <Lazy id="why" disabled={!PERF.lite} minHeight={1400}>
           <WhyChoose />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={1200}>
+        <Lazy id="projects" disabled={!PERF.lite} minHeight={1200}>
           <Projects />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={900}>
+        <Lazy id="clients" disabled={!PERF.lite} minHeight={900}>
           <Clients />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={900}>
+        <Lazy id="certifications" disabled={!PERF.lite} minHeight={900}>
           <Certifications />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={1200}>
+        <Lazy id="team" disabled={!PERF.lite} minHeight={1200}>
           <Team />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={1400}>
+        <Lazy id="process" disabled={!PERF.lite} minHeight={1400}>
           <Process />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={700}>
+        <Lazy id="testimonials" disabled={!PERF.lite} minHeight={700}>
           <Testimonials />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={500}>
+        <Lazy id="partners" disabled={!PERF.lite} minHeight={500}>
           <Partners />
         </Lazy>
         <Lazy disabled={!PERF.lite} minHeight={500}>
           <Emergency />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={1000}>
+        <Lazy id="contact" disabled={!PERF.lite} minHeight={1000}>
           <Contact />
         </Lazy>
       </motion.main>
