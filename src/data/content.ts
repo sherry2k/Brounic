@@ -149,6 +149,7 @@ export const SERVICES: Service[] = [
     detail:
       "Full lifecycle delivery of automatic sprinkler protection — from hazard classification and hydraulic calculation to pipe fabrication, installation and flushing.",
     points: ["NFPA 13 hydraulic design", "Wet / dry / pre-action / deluge", "Grooved & welded fabrication", "Flow test & witness handover"],
+    img: IMG.ceilingRed,
   },
   {
     key: "alarm",
@@ -157,6 +158,7 @@ export const SERVICES: Service[] = [
     detail:
       "Intelligent addressable fire detection engineered around your building's risk profile, with full integration into BMS, access control and voice evacuation.",
     points: ["Addressable & conventional panels", "Aspirating & beam detection", "Graphic monitoring stations", "Civil Defence Hassantuk linkage"],
+    img: IMG.heroPoster,
   },
   {
     key: "emergency-light",
@@ -165,6 +167,7 @@ export const SERVICES: Service[] = [
     detail:
       "Photometric-designed emergency lighting ensuring compliant lux levels along every escape route, with central battery or self-contained luminaires.",
     points: ["Photometric lux modelling", "Central & self-contained units", "90-minute autonomy testing", "Annual discharge certification"],
+    img: IMG.ceilingRed,
   },
   {
     key: "exit",
@@ -173,6 +176,7 @@ export const SERVICES: Service[] = [
     detail:
       "Clear, code-compliant egress signage that performs in smoke-logged conditions — specified, installed and certified to UAE Fire & Life Safety Code.",
     points: ["Maintained & non-maintained", "Photoluminescent wayfinding", "Directional escape planning", "Visibility distance compliance"],
+    img: IMG.safetySigns,
   },
   {
     key: "extinguisher",
@@ -181,6 +185,7 @@ export const SERVICES: Service[] = [
     detail:
       "Risk-matched portable extinguisher programmes — CO₂, dry powder, foam, water and wet chemical — with scheduled inspection and refill logistics.",
     points: ["Class A–F risk matching", "Monthly & annual inspection", "Hydro-testing & refilling", "Digital asset tagging"],
+    img: px(12072478, 800),
   },
   {
     key: "call-point",
@@ -189,6 +194,7 @@ export const SERVICES: Service[] = [
     detail:
       "Strategically located manual initiation devices with weatherproof and hazardous-area variants, fully addressable and individually annunciated.",
     points: ["Addressable & conventional", "IP-rated external variants", "Travel-distance compliance", "Loop testing & labelling"],
+    img: IMG.emergencyButton,
   },
   {
     key: "hydrant",
@@ -197,6 +203,7 @@ export const SERVICES: Service[] = [
     detail:
       "Complete hydrant infrastructure — underground rings, breeching inlets, landing valves and cabinets — pressure tested and Civil Defence witnessed.",
     points: ["Wet & dry riser networks", "External hydrant ring mains", "Breeching inlet assemblies", "Pressure & flow validation"],
+    img: IMG.hydrantStreet,
   },
   {
     key: "pump",
@@ -205,6 +212,7 @@ export const SERVICES: Service[] = [
     detail:
       "Turnkey pump room delivery — pump selection, suction/discharge headers, controllers, tanks and annual NFPA 25 performance testing.",
     points: ["UL / FM listed pump sets", "Diesel & electric duty", "Controller & ATS integration", "NFPA 25 flow testing"],
+    img: IMG.pipesGauge,
   },
   {
     key: "hose-reel",
@@ -213,6 +221,7 @@ export const SERVICES: Service[] = [
     detail:
       "Swinging and fixed hose reel assemblies within architectural cabinets, hydro-tested and integrated with the wet riser network.",
     points: ["30m swinging reels", "Architect-matched cabinets", "Hydrostatic testing", "Nozzle & valve servicing"],
+    img: px(189474, 800),
   },
   {
     key: "pava",
@@ -221,6 +230,7 @@ export const SERVICES: Service[] = [
     detail:
       "EN 54-16 compliant voice alarm systems delivering intelligible phased evacuation messaging, with background music and paging capability.",
     points: ["EN 54-16 voice alarm", "Phased evacuation logic", "Speech intelligibility (STI)", "Paging & BGM integration"],
+    img: IMG.controlRoom,
   },
   {
     key: "suppression",
@@ -229,6 +239,7 @@ export const SERVICES: Service[] = [
     detail:
       "Special hazard suppression for data centres, switch rooms, kitchens and fuel storage — designed on concentration and discharge modelling.",
     points: ["FM-200 / NOVEC / Inergen", "CO₂ & foam deluge", "Kitchen hood wet chemical", "Room integrity fan testing"],
+    img: IMG.machineRoom,
   },
   {
     key: "testing",
@@ -237,6 +248,7 @@ export const SERVICES: Service[] = [
     detail:
       "Structured pre-commissioning, cause-and-effect matrix validation and Civil Defence witnessing — documented with full T&C dossiers.",
     points: ["Cause & effect matrices", "Integrated systems testing", "Authority witnessing", "As-built & O&M dossiers"],
+    img: IMG.pipeMeters,
   },
   {
     key: "amc",
@@ -245,6 +257,7 @@ export const SERVICES: Service[] = [
     detail:
       "Annual maintenance contracts built on NFPA 25 inspection frequencies, with digital reporting, spares stocking and guaranteed response SLAs.",
     points: ["NFPA 25 PPM schedules", "4-hour emergency response", "Digital inspection reports", "Genuine spare parts stock"],
+    img: IMG.valves,
   },
   {
     key: "design",
@@ -253,6 +266,7 @@ export const SERVICES: Service[] = [
     detail:
       "Chartered engineering support producing shop drawings, hydraulic calculations, battery/voltage-drop studies and clash-free BIM coordination.",
     points: ["Shop & as-built drawings", "Hydraulic & battery calculations", "Revit / BIM coordination", "Authority submission packs"],
+    img: px(3862384, 800),
   },
   {
     key: "install",
@@ -261,6 +275,7 @@ export const SERVICES: Service[] = [
     detail:
       "Procurement of listed equipment from world-class manufacturers and installation by our own certified workforce — no uncontrolled subcontracting.",
     points: ["UL / FM listed materials", "In-house certified crews", "Programme & QA control", "HSE-led site delivery"],
+    img: px(7937751, 800),
   },
 ];
 
