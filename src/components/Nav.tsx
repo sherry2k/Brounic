@@ -57,8 +57,17 @@ export default function Nav() {
                 : "border border-transparent py-3",
             )}
           >
-            <a href="#top" aria-label="Brounic Group home" className="shrink-0">
-              <Logo dark={!scrolled} />
+            <a
+              href="#top"
+              aria-label="Brounic Group home"
+              className={cn(
+                "shrink-0 rounded-xl px-2.5 py-1.5 transition-all duration-500",
+                scrolled
+                  ? "bg-transparent"
+                  : "bg-white/95 shadow-sm backdrop-blur-sm",
+              )}
+            >
+              <Logo />
             </a>
 
             <nav className="hidden items-center gap-0 lg:flex" aria-label="Primary">
@@ -151,7 +160,9 @@ export default function Nav() {
           >
             <div className="container-x flex h-full flex-col py-6">
               <div className="flex items-center justify-between">
-                <Logo dark compact />
+                <span className="rounded-xl bg-white/95 px-2.5 py-1.5">
+                  <Logo compact />
+                </span>
                 <button
                   onClick={() => setOpen(false)}
                   aria-label="Close menu"
