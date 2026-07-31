@@ -6,7 +6,7 @@ export const BRAND = {
   /** Put your logo in /public (e.g. public/logo.png) then set "/logo.png".
    *  Empty string = keep the built-in drawn Brounic mark. */
   logoUrl: "/logo.png",
-  logoHeight: 40,
+  logoHeight: 35,
   name: "BROUNIC GROUP",
   tagline: "FIRE & SAFETY",
   siteUrl: "https://www.brounic.com",
