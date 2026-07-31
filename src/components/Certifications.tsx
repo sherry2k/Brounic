@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { CERTS } from "@/data/content";
 import { Eyebrow, Reveal, SplitText } from "@/lib/ui";
 import { PERF, anim } from "@/lib/perf";
@@ -264,7 +265,10 @@ export default function Certifications() {
         </div>
       </div>
 
-      {/* ---- Certificate modal ---- */}
+      {/* ---- Certificate modal ----
+           Rendered in a portal to <body>: the section has content-visibility
+           containment on mobile which would otherwise clip fixed children. */}
+      {createPortal(
       <AnimatePresence>
         {open !== null && (
           <motion.div
@@ -336,7 +340,9 @@ export default function Certifications() {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body,
+      )}
     </section>
   );
 }
