@@ -69,25 +69,42 @@ function ServiceCard({ s, i }: { s: Service; i: number }) {
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               className="overflow-hidden"
             >
-              <p className="mt-4 border-t border-ink-100 pt-4 text-[13px] leading-relaxed text-ink-500">
-                {s.detail}
-              </p>
-              <ul className="mt-4 space-y-2">
-                {s.points.map((p, k) => (
-                  <motion.li
-                    key={p}
-                    initial={{ opacity: 0, x: -8 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.08 + k * 0.06 }}
-                    className="flex items-start gap-2.5 text-[12.5px] font-medium text-ink-700"
-                  >
-                    <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-ember-500/12 text-ember-600">
-                      <Check className="h-2.5 w-2.5" />
-                    </span>
-                    {p}
-                  </motion.li>
-                ))}
-              </ul>
+              <div className="relative mt-4 border-t border-ink-100 pt-4">
+                {/* Keep text clear of the corner photo */}
+                <div className={s.img ? "pr-24 sm:pr-28" : ""}>
+                  <p className="text-[13px] leading-relaxed text-ink-500">{s.detail}</p>
+                  <ul className="mt-4 space-y-2">
+                    {s.points.map((p, k) => (
+                      <motion.li
+                        key={p}
+                        initial={{ opacity: 0, x: -8 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.08 + k * 0.06 }}
+                        className="flex items-start gap-2.5 text-[12.5px] font-medium text-ink-700"
+                      >
+                        <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-ember-500/12 text-ember-600">
+                          <Check className="h-2.5 w-2.5" />
+                        </span>
+                        {p}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+
+                {s.img && (
+                  <motion.img
+                    src={s.img}
+                    alt={s.title}
+                    loading="lazy"
+                    decoding="async"
+                    initial={{ opacity: 0, scale: 0.85, rotate: -3 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    transition={{ delay: 0.18, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    whileHover={{ scale: 1.06 }}
+                    className="absolute bottom-0 right-0 h-20 w-20 rounded-xl object-cover shadow-lux ring-1 ring-ink-900/10 sm:h-24 sm:w-24"
+                  />
+                )}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
