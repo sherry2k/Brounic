@@ -210,9 +210,11 @@
   .grid-lines-dark {
     background-image: none !important;
   }
-  /* kill all infinite CSS animations — they run even when offscreen */
+  /* Kill expensive infinite animations on mobile.
+     `.anim-marquee` is deliberately NOT in this list — a translateX keyframe
+     is GPU-composited and cheap, and the partner strip needs it to read as
+     a live logo carousel. */
   .anim-drift,
-  .anim-marquee,
   .anim-pan,
   .anim-ember,
   .anim-float,
