@@ -87,9 +87,7 @@ export default function About() {
                   decoding="async"
                   className="h-[440px] w-full object-cover transition-transform duration-[1400ms] hover:scale-105 sm:h-[520px]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" />
-               </div>
-              </div>
+                              </div>
 
               <motion.div
                 {...anim({
