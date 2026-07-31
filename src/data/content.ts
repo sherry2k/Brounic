@@ -649,6 +649,6 @@ export const CONTACT = {
   hours: "Sun – Thu · 8:00 AM – 6:00 PM  |  Emergency desk 24/7",
   mapSrc:
     "https://www.openstreetmap.org/export/embed.html?bbox=54.4650%2C24.3400%2C54.5450%2C24.3950&layer=mapnik&marker=24.3675%2C54.5050",
-  mapLink: "https://www.google.com/maps/search/?api=1&query=Mussafah+Industrial+Area+Abu+Dhabi",
+  mapLink: "https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d456.79936835835025!2d53.73216482302592!3d23.661830142383725!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sae!4v1785504634049!5m2!1sen!2sae" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin",
 };
 
