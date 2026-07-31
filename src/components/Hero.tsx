@@ -2,6 +2,7 @@ import { motion, useMotionValue, useScroll, useSpring, useTransform, type Motion
 import { useEffect, useRef, useState } from "react";
 import { HERO_STATS, IMG } from "@/data/content";
 import { Counter } from "@/lib/ui";
+import { PERF } from "@/lib/perf";
 import { ArrowRight, SystemIcon } from "./Icons";
 
 const FLOATERS = [
@@ -43,14 +44,10 @@ export default function Hero() {
   const [videoReady, setVideoReady] = useState(false);
   const [videoSrc, setVideoSrc] = useState<string | undefined>();
 
-  // Progressive enhancement: only stream the cinematic layer on capable devices
+  // Progressive enhancement: only stream the cinematic layer on capable devices.
   useEffect(() => {
-    const conn = (navigator as unknown as { connection?: { effectiveType?: string; saveData?: boolean } })
-      .connection;
-    const slow = conn?.saveData || (conn?.effectiveType && !/4g/.test(conn.effectiveType));
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (slow || reduced || window.innerWidth < 900) return;
-    const t = setTimeout(() => setVideoSrc(IMG.heroVideo), 1200);
+    if (PERF.lite) return;
+    const t = setTimeout(() => setVideoSrc(IMG.heroVideo), 1400);
     return () => clearTimeout(t);
   }, []);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -64,6 +61,7 @@ export default function Hero() {
   const smy = useSpring(my, { stiffness: 60, damping: 20 });
 
   useEffect(() => {
+    if (PERF.touch || PERF.reduced) return; // no mouse-parallax on touch devices
     const onMove = (e: MouseEvent) => {
       mx.set(e.clientX / window.innerWidth - 0.5);
       my.set(e.clientY / window.innerHeight - 0.5);
@@ -81,7 +79,7 @@ export default function Hero() {
       {/* ---- Background layers ---- */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <div
-          className="anim-drift absolute inset-[-8%] bg-cover bg-center opacity-45"
+          className={`absolute inset-[-8%] bg-cover bg-center opacity-45 ${PERF.mobile ? "" : "anim-drift"}`}
           style={{ backgroundImage: `url(${IMG.heroPoster})` }}
         />
         {videoSrc && (
@@ -105,24 +103,25 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_78%_78%,rgba(232,50,31,0.18),transparent_55%)]" />
       <div className="absolute inset-0 grid-lines-dark opacity-55" />
 
-      {/* Emergency light sweep — soft radial falloff, no blur filter (compositor-only animation) */}
+      {/* Emergency light sweep */}
       <motion.div
-        className="absolute -top-1/4 left-1/2 h-[150%] w-[52vw] -translate-x-1/2 bg-[radial-gradient(ellipse_at_center,rgba(232,50,31,0.2),transparent_62%)]"
-        animate={{ opacity: [0.3, 0.8, 0.3], rotate: [-8, 8, -8] }}
+        className="absolute -top-1/4 left-1/2 h-[150%] w-[38vw] -translate-x-1/2 bg-[linear-gradient(180deg,rgba(232,50,31,0.16),transparent_70%)] blur-3xl"
+        animate={{ opacity: [0.25, 0.75, 0.25], rotate: [-9, 9, -9] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Embers */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {Array.from({ length: 26 }).map((_, i) => (
+        {Array.from({ length: PERF.mobile ? 10 : 26 }).map((_, i) => (
           <span
             key={i}
-            className={`anim-ember ember-glow absolute bottom-0 rounded-full bg-ember-400 ${i % 2 === 1 ? "hidden sm:block" : ""}`}
+            className="anim-ember absolute bottom-0 rounded-full bg-ember-400"
             style={{
               left: `${(i * 3.9 + (i % 4) * 5) % 100}%`,
               height: i % 5 === 0 ? 3 : 2,
               width: i % 5 === 0 ? 3 : 2,
               opacity: 0.75,
+              boxShadow: "0 0 10px rgba(255,154,63,0.9)",
               ["--dur" as string]: `${5 + (i % 6) * 1.3}s`,
               ["--dx" as string]: `${((i % 5) - 2) * 26}px`,
               animationDelay: `${(i % 9) * 0.85}s`,

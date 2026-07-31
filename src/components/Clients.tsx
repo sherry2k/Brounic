@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { CLIENTS } from "@/data/content";
 import { Eyebrow, Reveal, SplitText } from "@/lib/ui";
+import { anim } from "@/lib/perf";
 
 export default function Clients() {
   return (
@@ -32,10 +33,12 @@ export default function Clients() {
           {CLIENTS.map((c, i) => (
             <motion.div
               key={c.name}
-              initial={{ opacity: 0, y: 26 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, delay: (i % 5) * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              {...anim({
+                initial: { opacity: 0, y: 26 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true, margin: "-40px" },
+                transition: { duration: 0.6, delay: (i % 5) * 0.06, ease: [0.16, 1, 0.3, 1] },
+              })}
               className="group relative flex aspect-[16/10] items-center justify-center overflow-hidden rounded-[20px] border border-ink-100 bg-white p-5 transition-all duration-500 hover:-translate-y-1.5 hover:border-ink-200 hover:shadow-lux"
             >
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-transparent to-ink-50/0 transition-all duration-500 group-hover:to-ember-500/5" />

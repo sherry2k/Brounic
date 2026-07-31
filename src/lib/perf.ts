@@ -47,3 +47,16 @@ export const PERF: PerfFlags =
   typeof window === "undefined"
     ? { touch: false, mobile: false, reduced: false, lowPower: false, lite: false }
     : detect();
+
+/**
+ * Motion helper: returns the given animation props on capable devices, and
+ * strips them all on lite/mobile so the framer-motion element mounts as a
+ * static node — no IntersectionObserver, no per-frame updates, no springs.
+ * Usage:
+ *   <motion.div {...anim({ initial, whileInView, viewport, transition })}>
+ */
+export function anim<T extends object>(props: T): T | object {
+  if (PERF.lite) return {};
+  return props;
+}
+

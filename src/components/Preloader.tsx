@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { LogoMark, LOGO_URL } from "./Logo";
+import { LogoMark } from "./Logo";
 import { BRAND } from "@/data/content";
 
 export default function Preloader({ onDone }: { onDone: () => void }) {
@@ -57,21 +57,16 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
               initial={{ scale: 0.86, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="relative"
             >
-              {LOGO_URL ? (
-                /* White badge with ember ring keeps black logo areas fully legible on the dark screen */
-                <span className="inline-block rounded-[24px] bg-gradient-to-br from-ember-400 via-ember-500 to-flame-500 p-[2.5px] shadow-[0_12px_44px_rgba(0,0,0,0.55)]">
-                  <span className="flex h-[104px] w-[104px] items-center justify-center rounded-[21.5px] bg-white sm:h-[116px] sm:w-[116px]">
-                    <img
-                      src={LOGO_URL}
-                      alt={`${BRAND.name} logo`}
-                      className="h-14 w-auto max-w-[76px] object-contain sm:h-16 sm:max-w-[84px]"
-                    />
-                  </span>
-                </span>
-              ) : (
-                <LogoMark className="h-16 w-16 text-white/80" />
-              )}
+              {/* soft outer glow so the logo pops on dark */}
+              <span
+                className="pointer-events-none absolute inset-0 -m-4 rounded-3xl bg-ember-500/25 blur-2xl"
+                aria-hidden
+              />
+              <span className="relative flex items-center justify-center rounded-2xl bg-white p-4 shadow-[0_10px_40px_-10px_rgba(244,122,32,0.5)] ring-1 ring-white/20">
+                <LogoMark className="h-16 w-16 text-ink-900" />
+              </span>
             </motion.div>
 
             <motion.div

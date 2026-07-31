@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { INDUSTRIES } from "@/data/content";
 import { Eyebrow, Reveal, SplitText } from "@/lib/ui";
+import { anim } from "@/lib/perf";
 import { ArrowRight } from "./Icons";
 
 export default function Industries() {
@@ -33,10 +34,12 @@ export default function Industries() {
             <motion.a
               key={ind.name}
               href="#contact"
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.65, delay: (i % 4) * 0.07, ease: [0.16, 1, 0.3, 1] }}
+              {...anim({
+                initial: { opacity: 0, y: 28 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true, margin: "-50px" },
+                transition: { duration: 0.65, delay: (i % 4) * 0.07, ease: [0.16, 1, 0.3, 1] },
+              })}
               className="group relative aspect-[4/5] overflow-hidden rounded-[22px] bg-ink-900 sm:aspect-[4/4.4]"
             >
               <img

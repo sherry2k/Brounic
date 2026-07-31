@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ORG_REPORTS, TEAM } from "@/data/content";
 import { Eyebrow, Reveal, SplitText } from "@/lib/ui";
+import { anim } from "@/lib/perf";
 import { LinkedIn, Mail, SystemIcon } from "./Icons";
 import { cn } from "@/utils/cn";
 
@@ -50,10 +51,12 @@ export default function Team() {
             <div key={m.name} className="flex flex-col">
               {i > 0 && <Connector delay={0.5} />}
               <motion.article
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: i * 0.45, ease: [0.16, 1, 0.3, 1] }}
+                {...anim({
+                  initial: { opacity: 0, y: 30 },
+                  whileInView: { opacity: 1, y: 0 },
+                  viewport: { once: true },
+                  transition: { duration: 0.8, delay: i * 0.45, ease: [0.16, 1, 0.3, 1] },
+                })}
                 className="grad-border group relative mx-auto w-full overflow-hidden rounded-[28px] border border-ink-100 bg-white shadow-lux"
               >
                 <div className="flex flex-col sm:flex-row">
@@ -104,10 +107,12 @@ export default function Team() {
             <div className="absolute left-[16.66%] right-[16.66%] top-0 hidden h-px sm:block">
               <motion.span
                 className="block h-px w-full origin-center bg-gradient-to-r from-ember-500 via-flame-500 to-ember-500"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: 1.25, ease: [0.16, 1, 0.3, 1] }}
+                {...anim({
+                  initial: { scaleX: 0 },
+                  whileInView: { scaleX: 1 },
+                  viewport: { once: true },
+                  transition: { duration: 0.9, delay: 1.25, ease: [0.16, 1, 0.3, 1] },
+                })}
               />
             </div>
 
@@ -115,19 +120,23 @@ export default function Team() {
               {ORG_REPORTS.map((r, i) => (
                 <motion.div
                   key={r.role}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.7, delay: 1.4 + i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                  {...anim({
+                    initial: { opacity: 0, y: 24 },
+                    whileInView: { opacity: 1, y: 0 },
+                    viewport: { once: true },
+                    transition: { duration: 0.7, delay: 1.4 + i * 0.12, ease: [0.16, 1, 0.3, 1] },
+                  })}
                   className="flex flex-col items-center"
                 >
                   {/* vertical stub */}
                   <motion.span
                     className="hidden h-8 w-px origin-top bg-gradient-to-b from-flame-500 to-ember-500 sm:block"
-                    initial={{ scaleY: 0 }}
-                    whileInView={{ scaleY: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 1.5 + i * 0.12 }}
+                    {...anim({
+                      initial: { scaleY: 0 },
+                      whileInView: { scaleY: 1 },
+                      viewport: { once: true },
+                      transition: { duration: 0.5, delay: 1.5 + i * 0.12 },
+                    })}
                   />
                   <span className="mb-3 mt-3 h-2 w-2 rounded-full bg-flame-500 sm:mt-0" />
                   <div className="group w-full rounded-2xl border border-ink-100 bg-ink-50/60 p-5 text-center transition-all duration-500 hover:-translate-y-1 hover:border-ember-500/30 hover:bg-white hover:shadow-lux">

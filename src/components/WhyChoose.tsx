@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { IMG, WHY } from "@/data/content";
 import { Counter, Eyebrow, Reveal, SplitText } from "@/lib/ui";
+import { PERF, anim } from "@/lib/perf";
 import { Check, SystemIcon } from "./Icons";
 
 const HIGHLIGHT = [
@@ -13,13 +14,15 @@ const HIGHLIGHT = [
 export default function WhyChoose() {
   return (
     <section id="why" className="noise relative overflow-hidden bg-ink-950 py-24 sm:py-32">
-      <img
-        src={IMG.pipesGauge}
-        alt=""
-        aria-hidden
-        loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover opacity-[0.12]"
-      />
+      {!PERF.lite && (
+        <img
+          src={IMG.pipesGauge}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.12]"
+        />
+      )}
       <div className="absolute inset-0 bg-gradient-to-b from-ink-950 via-ink-950/94 to-ink-950" />
       <div className="absolute inset-0 grid-lines-dark opacity-40" />
       <div className="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-ember-500/10 blur-[160px]" />
@@ -47,10 +50,12 @@ export default function WhyChoose() {
           {HIGHLIGHT.map((h, i) => (
             <motion.div
               key={h.label}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.09 }}
+              {...anim({
+                initial: { opacity: 0, y: 24 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true },
+                transition: { duration: 0.7, delay: i * 0.09 },
+              })}
               className="group relative bg-ink-950/70 px-7 py-9 transition-colors duration-500 hover:bg-ink-900/80"
             >
               <div className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
@@ -70,10 +75,12 @@ export default function WhyChoose() {
           {WHY.map((w, i) => (
             <motion.div
               key={w.title}
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.6, delay: (i % 3) * 0.07 }}
+              {...anim({
+                initial: { opacity: 0, y: 22 },
+                whileInView: { opacity: 1, y: 0 },
+                viewport: { once: true, margin: "-40px" },
+                transition: { duration: 0.6, delay: (i % 3) * 0.07 },
+              })}
               className="group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-6 transition-all duration-500 hover:-translate-y-1 hover:border-ember-500/25 hover:bg-white/[0.06]"
             >
               <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-ember-500/0 blur-2xl transition-all duration-700 group-hover:bg-ember-500/25" />

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { SYSTEMS } from "@/data/content";
 import { Eyebrow, Reveal, SplitText } from "@/lib/ui";
+import { anim } from "@/lib/perf";
 import { SystemIcon } from "./Icons";
 import { cn } from "@/utils/cn";
 
@@ -46,10 +47,12 @@ export default function Showcase() {
             {SYSTEMS.map((s, i) => (
               <motion.button
                 key={s.key}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: i * 0.05 }}
+                {...anim({
+                  initial: { opacity: 0, x: -20 },
+                  whileInView: { opacity: 1, x: 0 },
+                  viewport: { once: true },
+                  transition: { duration: 0.55, delay: i * 0.05 },
+                })}
                 onMouseEnter={() => setActive(s.key)}
                 onFocus={() => setActive(s.key)}
                 onClick={() => setActive(s.key)}
@@ -108,6 +111,13 @@ export default function Showcase() {
                     <stop offset="0%" stopColor="#242A31" />
                     <stop offset="100%" stopColor="#171C22" />
                   </linearGradient>
+                  <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+                    <feGaussianBlur stdDeviation="5" result="b" />
+                    <feMerge>
+                      <feMergeNode in="b" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
                 </defs>
 
                 {/* ground */}
@@ -139,7 +149,7 @@ export default function Showcase() {
                 </g>
 
                 {/* ---------- SPRINKLERS ---------- */}
-                <g opacity={dim("sprinkler")} style={{ transition: "opacity .45s" }}>
+                <g opacity={dim("sprinkler")} style={{ transition: "opacity .45s" }} filter={on("sprinkler") ? "url(#glow)" : undefined}>
                   {FLOORS.map((i) => (
                     <g key={`spr-${i}`}>
                       <line x1="268" y1={fy(i) + 14} x2="572" y2={fy(i) + 14} stroke={col("sprinkler")} strokeWidth="1.6" />
@@ -169,7 +179,7 @@ export default function Showcase() {
                 </g>
 
                 {/* ---------- ALARM / DETECTION ---------- */}
-                <g opacity={dim("alarm")} style={{ transition: "opacity .45s" }}>
+                <g opacity={dim("alarm")} style={{ transition: "opacity .45s" }} filter={on("alarm") ? "url(#glow)" : undefined}>
                   {FLOORS.map((i) =>
                     [0, 1, 2].map((j) => {
                       const x = 330 + j * 100;
@@ -220,7 +230,7 @@ export default function Showcase() {
                 </g>
 
                 {/* ---------- HYDRANT / RISER ---------- */}
-                <g opacity={dim("hydrant")} style={{ transition: "opacity .45s" }}>
+                <g opacity={dim("hydrant")} style={{ transition: "opacity .45s" }} filter={on("hydrant") ? "url(#glow)" : undefined}>
                   <line x1="588" y1="72" x2="588" y2="540" stroke={col("hydrant")} strokeWidth="3.4" className={on("hydrant") ? "dash-flow" : undefined} />
                   <line x1="525" y1="72" x2="588" y2="72" stroke={col("hydrant")} strokeWidth="2.4" />
                   {FLOORS.map((i) => (
@@ -236,7 +246,7 @@ export default function Showcase() {
                 </g>
 
                 {/* ---------- PUMP ROOM ---------- */}
-                <g opacity={dim("pump")} style={{ transition: "opacity .45s" }}>
+                <g opacity={dim("pump")} style={{ transition: "opacity .45s" }} filter={on("pump") ? "url(#glow)" : undefined}>
                   <rect x="204" y="514" width="392" height="36" rx="3" fill="#12171C" stroke={col("pump")} strokeWidth="1.3" strokeOpacity="0.7" />
                   {[0, 1, 2].map((j) => {
                     const x = 262 + j * 90;
@@ -279,7 +289,7 @@ export default function Showcase() {
                 </g>
 
                 {/* ---------- PA / VA ---------- */}
-                <g opacity={dim("pava")} style={{ transition: "opacity .45s" }}>
+                <g opacity={dim("pava")} style={{ transition: "opacity .45s" }} filter={on("pava") ? "url(#glow)" : undefined}>
                   {FLOORS.map((i) =>
                     [0, 1].map((j) => {
                       const x = 372 + j * 140;
@@ -305,7 +315,7 @@ export default function Showcase() {
                 </g>
 
                 {/* ---------- SUPPRESSION ---------- */}
-                <g opacity={dim("suppression")} style={{ transition: "opacity .45s" }}>
+                <g opacity={dim("suppression")} style={{ transition: "opacity .45s" }} filter={on("suppression") ? "url(#glow)" : undefined}>
                   <rect x="430" y={fy(2) + 4} width="150" height="54" rx="4" fill={on("suppression") ? "rgba(244,122,32,0.09)" : "transparent"} stroke={col("suppression")} strokeWidth="1.3" strokeDasharray="5 4" />
                   <text x="440" y={fy(2) + 20} fill={col("suppression")} fillOpacity="0.85" fontSize="8.5" fontFamily="Sora, sans-serif" letterSpacing="1.4">
                     DATA HALL
@@ -330,7 +340,7 @@ export default function Showcase() {
                 </g>
 
                 {/* ---------- EMERGENCY LIGHTING ---------- */}
-                <g opacity={dim("emergency-light")} style={{ transition: "opacity .45s" }}>
+                <g opacity={dim("emergency-light")} style={{ transition: "opacity .45s" }} filter={on("emergency-light") ? "url(#glow)" : undefined}>
                   <rect x="204" y="112" width="52" height="438" fill={on("emergency-light") ? "rgba(244,122,32,0.06)" : "transparent"} stroke={col("emergency-light")} strokeWidth="1" strokeDasharray="4 5" />
                   {FLOORS.map((i) => (
                     <g key={`em-${i}`}>

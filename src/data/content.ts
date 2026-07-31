@@ -13,8 +13,17 @@ export const BRAND = {
   siteUrl: "https://www.brounicgroup.com",
 };
 
-export const px = (id: number | string, w = 1400) =>
-  `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${w}`;
+/**
+ * Pexels image helper. On small viewports we automatically request a smaller
+ * image variant to cut mobile bandwidth by ~60-70%.
+ */
+export const px = (id: number | string, w = 1400) => {
+  const width =
+    typeof window !== "undefined" && window.innerWidth < 900
+      ? Math.min(w, 900)
+      : w;
+  return `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${width}`;
+};
 
 export const IMG = {
   heroPoster: px(36595991, 1920),

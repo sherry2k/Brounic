@@ -2,6 +2,7 @@ import { AnimatePresence, motion, useScroll, useSpring, useTransform } from "fra
 import { useCallback, useEffect, useRef, useState } from "react";
 import { CERTS } from "@/data/content";
 import { Eyebrow, Reveal, SplitText } from "@/lib/ui";
+import { PERF, anim } from "@/lib/perf";
 import { ArrowRight, Check } from "./Icons";
 import { LogoMark } from "./Logo";
 import { cn } from "@/utils/cn";
@@ -137,10 +138,12 @@ export default function Certifications() {
     };
   }, [open, close, step]);
 
+  const useScrollRail = !PERF.lite;
+
   return (
     <section id="certifications" className="relative bg-ink-50/70">
-      <div ref={ref} className="relative h-[320vh]">
-        <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+      <div ref={ref} className={cn("relative", useScrollRail ? "h-[320vh]" : "py-24")}>
+        <div className={cn("flex flex-col justify-center overflow-hidden", useScrollRail ? "sticky top-0 h-screen" : "")}>
           <div className="pointer-events-none absolute inset-0 grid-lines opacity-60" />
           <div className="pointer-events-none absolute -right-40 top-1/4 h-[520px] w-[520px] rounded-full bg-ember-500/10 blur-[140px]" />
 
@@ -165,8 +168,14 @@ export default function Certifications() {
             </div>
           </div>
 
-          <div className="relative mt-12 overflow-hidden">
-            <motion.div style={{ x }} className="flex gap-5 pl-6 will-change-transform md:pl-[max(2.5rem,calc((100vw-84rem)/2+2.5rem))]">
+          <div className={cn("relative mt-12", useScrollRail ? "overflow-hidden" : "hide-scrollbar overflow-x-auto")}>
+            <motion.div
+              style={useScrollRail ? { x } : undefined}
+              className={cn(
+                "flex gap-4 pl-5 will-change-transform sm:gap-5 sm:pl-6",
+                useScrollRail && "md:pl-[max(2.5rem,calc((100vw-84rem)/2+2.5rem))]",
+              )}
+            >
               {CERTS.map((c, i) => (
                 <button
                   key={c.code}
@@ -198,10 +207,13 @@ export default function Certifications() {
                           strokeWidth="2"
                           strokeLinecap="round"
                           strokeDasharray="151"
-                          initial={{ strokeDashoffset: 151 }}
-                          whileInView={{ strokeDashoffset: 22 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+                          strokeDashoffset={PERF.lite ? 22 : undefined}
+                          {...anim({
+                            initial: { strokeDashoffset: 151 },
+                            whileInView: { strokeDashoffset: 22 },
+                            viewport: { once: true },
+                            transition: { duration: 1.3, ease: [0.16, 1, 0.3, 1] },
+                          })}
                           transform="rotate(-90 28 28)"
                         />
                       </svg>
@@ -237,16 +249,18 @@ export default function Certifications() {
             </motion.div>
           </div>
 
-          <div className="container-x relative mt-10">
-            <div className="flex items-center gap-4">
-              <div className="h-px flex-1 bg-ink-200">
-                <motion.div style={{ width: progress }} className="h-px bg-gradient-to-r from-ember-500 to-flame-500" />
+          {useScrollRail && (
+            <div className="container-x relative mt-10">
+              <div className="flex items-center gap-4">
+                <div className="h-px flex-1 bg-ink-200">
+                  <motion.div style={{ width: progress }} className="h-px bg-gradient-to-r from-ember-500 to-flame-500" />
+                </div>
+                <span className="text-[10px] font-bold tracking-[0.24em] text-ink-400 uppercase">
+                  Scroll · Click to inspect
+                </span>
               </div>
-              <span className="text-[10px] font-bold tracking-[0.24em] text-ink-400 uppercase">
-                Scroll · Click to inspect
-              </span>
             </div>
-          </div>
+          )}
         </div>
       </div>
 

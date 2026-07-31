@@ -8,6 +8,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { PERF } from "@/lib/perf";
 import { cn } from "@/utils/cn";
 
 /* ---------------- Scroll reveal ---------------- */
@@ -24,11 +25,17 @@ export function Reveal({
   className?: string;
   once?: boolean;
 }) {
+  // On low-power / mobile devices: skip the IntersectionObserver + motion
+  // entirely. `whileInView` adds one observer per element which is expensive
+  // when there are ~100 of them on the page.
+  if (PERF.lite) {
+    return <div className={className}>{children}</div>;
+  }
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y, filter: "blur(6px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       viewport={{ once, margin: "-80px" }}
       transition={{ duration: 0.85, delay, ease: [0.16, 1, 0.3, 1] }}
     >
@@ -49,6 +56,10 @@ export function SplitText({
   delay?: number;
   as?: React.ElementType;
 }) {
+  // Mobile / lite: just render plain text — the stagger reveal was O(n) observers.
+  if (PERF.lite) {
+    return <Tag className={className}>{text}</Tag>;
+  }
   const words = text.split(" ");
   return (
     <Tag className={className}>
@@ -101,6 +112,12 @@ export function Counter({
 
   useEffect(() => {
     if (!inView) return;
+    // On low-power devices just snap to the final value — RAF loops per counter
+    // add up fast (there are ~30 counters on the page).
+    if (PERF.lite) {
+      setVal(to);
+      return;
+    }
     let raf = 0;
     const start = performance.now();
     const tick = (now: number) => {
@@ -203,12 +220,13 @@ export function GhostButton({
 export function useParallax(range = 80): [React.RefObject<HTMLDivElement | null>, MotionValue<number>] {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [range, -range]);
+  const disabled = PERF.lite;
+  const y = useTransform(scrollYProgress, [0, 1], disabled ? [0, 0] : [range, -range]);
   const smooth = useSpring(y, { stiffness: 120, damping: 24, mass: 0.4 });
   return [ref, smooth];
 }
 
-/* ---------------- 3D tilt card ---------------- */
+/* ---------------- 3D tilt card (desktop only) ---------------- */
 export function Tilt({
   children,
   className,
@@ -223,6 +241,10 @@ export function Tilt({
   const ry = useMotionValue(0);
   const srx = useSpring(rx, { stiffness: 200, damping: 20 });
   const sry = useSpring(ry, { stiffness: 200, damping: 20 });
+
+  if (PERF.touch || PERF.lite) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { IMG, TIMELINE, VALUES } from "@/data/content";
 import { Counter, Eyebrow, Reveal, SplitText, useParallax } from "@/lib/ui";
+import { anim } from "@/lib/perf";
 import { ArrowRight, Check, SystemIcon } from "./Icons";
 import { cn } from "@/utils/cn";
 
@@ -98,10 +99,12 @@ export default function About() {
               </div>
 
               <motion.div
-                initial={{ opacity: 0, y: 24, scale: 0.94 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                {...anim({
+                  initial: { opacity: 0, y: 24, scale: 0.94 },
+                  whileInView: { opacity: 1, y: 0, scale: 1 },
+                  viewport: { once: true },
+                  transition: { duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] },
+                })}
                 className="glass absolute -bottom-8 -left-6 w-56 rounded-3xl p-5 shadow-lux sm:-left-10"
               >
                 <div className="flex items-center gap-2.5">
@@ -118,10 +121,12 @@ export default function About() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, x: 24 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: 0.4 }}
+                {...anim({
+                  initial: { opacity: 0, x: 24 },
+                  whileInView: { opacity: 1, x: 0 },
+                  viewport: { once: true },
+                  transition: { duration: 0.9, delay: 0.4 },
+                })}
                 className="absolute -right-4 top-8 hidden rounded-2xl border border-ink-900/8 bg-ink-950 px-4 py-3 shadow-lux sm:block"
               >
                 <div className="text-[9px] font-semibold tracking-[0.3em] text-white/40 uppercase">Est.</div>
@@ -253,8 +258,8 @@ export default function About() {
               <div className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full bg-ember-500/8 blur-3xl" />
               <motion.div
                 key={active}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 18, filter: "blur(6px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
                 className="relative max-w-3xl"
               >

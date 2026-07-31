@@ -1,14 +1,22 @@
 import { PARTNERS } from "@/data/content";
 import { Eyebrow, Reveal } from "@/lib/ui";
+import { PERF } from "@/lib/perf";
+import { cn } from "@/utils/cn";
 
 function Row({ items, reverse = false, dur }: { items: string[]; reverse?: boolean; dur: string }) {
+  // On mobile, drop the marquee animation and render a plain scroll strip —
+  // constant CSS transforms on 30+ nodes are painful on low-end hardware.
+  const animate = !PERF.lite;
   return (
-    <div className="group relative flex overflow-hidden">
+    <div className={cn("group relative flex", animate ? "overflow-hidden" : "hide-scrollbar overflow-x-auto")}>
       <div
-        className="anim-marquee flex shrink-0 items-center gap-4 group-hover:[animation-play-state:paused]"
-        style={{ ["--dur" as string]: dur, animationDirection: reverse ? "reverse" : "normal" }}
+        className={cn(
+          "flex shrink-0 items-center gap-4",
+          animate && "anim-marquee group-hover:[animation-play-state:paused]",
+        )}
+        style={animate ? { ["--dur" as string]: dur, animationDirection: reverse ? "reverse" : "normal" } : undefined}
       >
-        {[...items, ...items].map((p, i) => (
+        {(animate ? [...items, ...items] : items).map((p, i) => (
           <span
             key={`${p}-${i}`}
             className="group/item relative flex h-[86px] w-[220px] shrink-0 items-center justify-center rounded-2xl border border-ink-100 bg-white/70 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-ember-500/30 hover:shadow-lux"
@@ -53,9 +61,7 @@ export default function Partners() {
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-ink-50 to-transparent sm:w-40" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-ink-50 to-transparent sm:w-40" />
         <Row items={PARTNERS.slice(0, half)} dur="38s" />
-        <div className="hidden sm:block">
-          <Row items={PARTNERS.slice(half)} dur="46s" reverse />
-        </div>
+        <Row items={PARTNERS.slice(half)} dur="46s" reverse />
       </div>
     </section>
   );
