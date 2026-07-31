@@ -229,7 +229,7 @@ export default function Contact() {
               <div className="group relative flex-1 overflow-hidden rounded-[32px] border border-ink-100 shadow-lux">
                 <iframe
                   title="Brounic Group office location — Al Dhafra Region, Abu Dhabi"
-                   src="https://maps.google.com/maps?q=Mussafah%20Industrial%20Area%20Abu%20Dhabi&z=13&output=embed"
+                   src="https://www.google.com/maps/embed?"
                   className="h-[280px] w-full grayscale transition-all duration-700 group-hover:grayscale-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
