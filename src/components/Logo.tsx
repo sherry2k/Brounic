@@ -69,28 +69,26 @@ export function Logo({
           dark ? "text-white/85" : "text-ink-900",
         )}
       />
-      {!LOGO_URL && (
-        <div className="leading-none">
+      <div className="leading-none">
+        <div
+          className={cn(
+            "font-display text-[17px] font-extrabold tracking-tight",
+            dark ? "text-white" : "text-ink-900",
+          )}
+        >
+          {first} <span className="text-ember-500">{rest.join(" ")}</span>
+        </div>
+        {!compact && (
           <div
             className={cn(
-              "font-display text-[17px] font-extrabold tracking-tight",
-              dark ? "text-white" : "text-ink-900",
+              "mt-1 text-[8.5px] font-semibold tracking-[0.42em]",
+              dark ? "text-white/45" : "text-ink-400",
             )}
           >
-            {first} <span className="text-ember-500">{rest.join(" ")}</span>
+            {BRAND.tagline}
           </div>
-          {!compact && (
-            <div
-              className={cn(
-                "mt-1 text-[8.5px] font-semibold tracking-[0.42em]",
-                dark ? "text-white/45" : "text-ink-400",
-              )}
-            >
-              {BRAND.tagline}
-            </div>
-          )}
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
