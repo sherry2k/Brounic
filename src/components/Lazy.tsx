@@ -1,23 +1,31 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 
+/** Fired by the nav when an in-page anchor is clicked, so every Lazy
+ *  section mounts immediately and the browser can find the target id. */
+export const MOUNT_ALL_EVENT = "brounic:mount-all";
+
+export function mountAllSections() {
+  window.dispatchEvent(new CustomEvent(MOUNT_ALL_EVENT));
+}
+
 /**
- * Only mounts children when the placeholder is within 1.5 viewports of the
- * scroll position. Before that, renders a plain sized <div> so page height
- * stays correct and scroll depth doesn't jump.
+ * Only mounts children when the placeholder is within ~1.5 viewports of the
+ * scroll position. Before that, renders a plain sized <div> that CARRIES THE
+ * SECTION ID, so anchor links still resolve to the right scroll offset.
  *
- * This is the biggest mobile-perf win in the codebase — instead of mounting
- * ~15 sections × dozens of framer-motion components on first paint, we only
- * mount what's about to be seen. Skipped entirely on desktop where the
- * browser handles it fine.
+ * Also listens for MOUNT_ALL_EVENT so nav clicks can force everything to
+ * mount before scrolling.
  */
 export default function Lazy({
   children,
+  id,
   minHeight = 800,
   rootMargin = "150% 0px",
   disabled = false,
 }: {
   children: ReactNode;
-  /** Fallback height so the page doesn't collapse before mount. */
+  /** Same id as the <section> inside — keeps anchors working while unmounted. */
+  id?: string;
   minHeight?: number;
   rootMargin?: string;
   disabled?: boolean;
@@ -27,13 +35,14 @@ export default function Lazy({
 
   useEffect(() => {
     if (disabled || mounted) return;
-    const el = ref.current;
-    if (!el) return;
 
-    // Fallback for very old browsers
-    if (!("IntersectionObserver" in window)) {
+    const mount = () => setMounted(true);
+    window.addEventListener(MOUNT_ALL_EVENT, mount);
+
+    const el = ref.current;
+    if (!el || !("IntersectionObserver" in window)) {
       setMounted(true);
-      return;
+      return () => window.removeEventListener(MOUNT_ALL_EVENT, mount);
     }
 
     const obs = new IntersectionObserver(
@@ -49,10 +58,15 @@ export default function Lazy({
       { rootMargin },
     );
     obs.observe(el);
-    return () => obs.disconnect();
+
+    return () => {
+      obs.disconnect();
+      window.removeEventListener(MOUNT_ALL_EVENT, mount);
+    };
   }, [disabled, mounted, rootMargin]);
 
   if (mounted) return <>{children}</>;
 
-  return <div ref={ref} aria-hidden style={{ minHeight }} />;
+  // Placeholder keeps the id so `document.querySelector('#projects')` works.
+  return <div ref={ref} id={id} aria-hidden style={{ minHeight }} />;
 }
