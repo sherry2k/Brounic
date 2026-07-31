@@ -131,7 +131,7 @@ export default function Nav() {
                 onClick={() => setOpen(true)}
                 aria-label="Open menu"
                 className={cn(
-                  "flex h-10 w-10 items-center justify-center rounded-xl border transition-colors xl:hidden",
+                  "flex h-10 w-10 items-center justify-center rounded-xl border transition-colors lg:hidden",
                   scrolled ? "border-ink-200 text-ink-800" : "border-white/18 text-white",
                 )}
               >
@@ -156,7 +156,7 @@ export default function Nav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[120] bg-ink-950/95 backdrop-blur-xl xl:hidden"
+            className="fixed inset-0 z-[120] bg-ink-950/95 backdrop-blur-xl lg:hidden"
           >
             <div className="container-x flex h-full flex-col py-6">
               <div className="flex items-center justify-between">
