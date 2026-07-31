@@ -6,7 +6,7 @@ import { Check, SystemIcon } from "./Icons";
 
 const HIGHLIGHT = [
   { value: 15, suffix: "+", label: "Years in the UAE market", sub: "Since 2011, Abu Dhabi" },
-  { value: 1000, suffix: "+", label: "Projects commissioned", sub: "Across 12 sectors" },
+  { value: 600, suffix: "+", label: "Projects commissioned", sub: "Across 12 sectors" },
   { value: 380, suffix: "+", label: "Sites under AMC", sub: "24/7 monitored response" },
   { value: 98, suffix: "%", label: "On-time delivery", sub: "Programme certainty" },
 ];
