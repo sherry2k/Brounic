@@ -146,7 +146,7 @@ export default function About() {
             },
             {
               tag: "Mission",
-              body: "To deliver top-quality fire protection and construction services, fostering lasting partnerships by exceeding client expectations at every step — committed to fair pricing, continuous improvement and innovation that keeps our services advanced, reliable and efficient.",
+              body: "At Brounic Group, our mission is to deliver top-quality ﬁre protection and construction services, fostering lasting partnerships by exceeding client expectations at every step. We are committed to fair pricing, continuous improvement, and innovation, ensuring our services are advanced, reliable, and efﬁcient. By investing in our employees' growth and leveraging joint venture expertise, we aim to expand our impact across industries, prioritizing safety, quality, and long-term value for all stakeholders.",
               img: IMG.engineerFemale,
             },
           ].map((c, i) => (
