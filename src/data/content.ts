@@ -5,12 +5,12 @@
 export const BRAND = {
   /** Put your logo in /public (e.g. public/logo.png) then set "/logo.png".
    *  Empty string = keep the built-in drawn Brounic mark. */
-  logoUrl: "",
+  logoUrl: "/logo.png",
   /** Logo height in the header (px). Increase if your mark reads small. */
   logoHeight: 40,
   name: "BROUNIC GROUP",
   tagline: "FIRE & SAFETY",
-  siteUrl: "https://www.brounicgroup.com",
+  siteUrl: "https://www.brounic.com",
 };
 
 export const px = (id: number | string, w = 1400) =>
@@ -628,13 +628,13 @@ export const PARTNERS = [
 ];
 
 export const CONTACT = {
-  address: "Warehouse 12, Mussafah Industrial Area M-17, Abu Dhabi, United Arab Emirates",
-  phone: "+971 2 555 0110",
-  phoneHref: "tel:+97125550110",
-  emergency: "+971 50 555 0119",
-  emergencyHref: "tel:+971505550119",
-  whatsappHref: "https://wa.me/971505550119",
-  email: "info@brounicgroup.com",
+  address: "Industrial Area, Al Dhafra Region, Abu Dhabi, United Arab Emirates",
+  phone: "+971 50 269 11291",
+  phoneHref: "tel:+9715081043989",
+  emergency: "+971 50 810 43989",
+  emergencyHref: "tel:+9715081043987",
+  whatsappHref: "https://wa.me/9715081043989",
+  email: "info@brounic.com",
   hours: "Sun – Thu · 8:00 AM – 6:00 PM  |  Emergency desk 24/7",
   mapSrc:
     "https://www.openstreetmap.org/export/embed.html?bbox=54.4650%2C24.3400%2C54.5450%2C24.3950&layer=mapnik&marker=24.3675%2C54.5050",
