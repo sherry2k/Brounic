@@ -160,7 +160,7 @@ export default function Team() {
         <Reveal delay={0.1}>
           <div className="mx-auto mt-14 grid max-w-4xl gap-4 rounded-[26px] border border-ink-100 bg-ink-50/60 p-8 sm:grid-cols-3 sm:p-10">
             {[
-              { k: "Engineering", v: "18 specialists", d: "Design, hydraulics, BIM & approvals" },
+              { k: "Engineering", v: "5 specialists", d: "Design, BIM & approvals" },
               { k: "Project Management", v: "12 specialists", d: "Programme, QA/QC and handover" },
               { k: "Technical Field Team", v: "20+ technicians", d: "Installation, T&C and AMC response" },
             ].map((c) => (
