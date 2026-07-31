@@ -64,8 +64,9 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
                 className="pointer-events-none absolute inset-0 -m-4 rounded-3xl bg-ember-500/25 blur-2xl"
                 aria-hidden
               />
-              <span className="relative flex items-center justify-center rounded-2xl bg-white p-4 shadow-[0_10px_40px_-10px_rgba(244,122,32,0.5)] ring-1 ring-white/20">
-                <LogoMark className="h-18 w-18 text-ink-900" />
+              {/* Plate stays a fixed 96×96; padding reduced so the mark reads larger inside it. */}
+              <span className="relative flex h-24 w-24 items-center justify-center rounded-2xl bg-white p-1.5 shadow-[0_10px_40px_-10px_rgba(244,122,32,0.5)] ring-1 ring-white/20">
+                <LogoMark className="h-[84px] w-[84px] text-ink-900" size={84} />
               </span>
             </motion.div>
 
