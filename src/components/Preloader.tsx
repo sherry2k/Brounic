@@ -65,7 +65,7 @@ export default function Preloader({ onDone }: { onDone: () => void }) {
                 aria-hidden
               />
               <span className="relative flex items-center justify-center rounded-2xl bg-white p-4 shadow-[0_10px_40px_-10px_rgba(244,122,32,0.5)] ring-1 ring-white/20">
-                <LogoMark className="h-16 w-16 text-ink-900" />
+                <LogoMark className="h-18 w-18 text-ink-900" />
               </span>
             </motion.div>
 
