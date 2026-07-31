@@ -228,8 +228,8 @@ export default function Contact() {
             <Reveal delay={0.16}>
               <div className="group relative flex-1 overflow-hidden rounded-[32px] border border-ink-100 shadow-lux">
                 <iframe
-                  title="Brounic Group head office location — Mussafah, Abu Dhabi"
-                  src="https://maps.google.com/maps?q=Mussafah%20Industrial%20Area%20Abu%20Dhabi&z=13&output=embed"
+                  title="Brounic Group office location — Al Dhafra Region, Abu Dhabi"
+                  src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d456.79936835835025!2d53.73216482302592!3d23.661830142383725!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sae!4v1785504634049!5m2!1sen!2sae" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
                   className="h-[280px] w-full grayscale transition-all duration-700 group-hover:grayscale-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
