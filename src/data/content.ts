@@ -595,8 +595,8 @@ export const CLIENTS: Client[] = [
   { name: "Samsung C&T", abbr: "SAMSUNG", color: "#1428A0", sub: "Engineering & Construction", logo: "/clients/samsung.png" },
   { name: "Concorde Technical Est.", abbr: "CONCORDE", color: "#C41F10", logo: "/clients/concorde.png" },
   { name: "Técnicas Reunidas", abbr: "TR", color: "#6B7280", logo: "/clients/tecnicas.png" },
-  { name: "Masdar City", abbr: "MASDAR", color: "#0E9AA7" },
-  { name: "Command of Military Works", abbr: "CMW", color: "#3E6B35", sub: "قيادة الأشغال العسكرية" },
+  { name: "Masdar City", abbr: "MASDAR", color: "#0E9AA7", logo: "/clients/masdar.png" },
+  { name: "Command of Military Works", abbr: "CMW", color: "#3E6B35", sub: "قيادة الأشغال العسكرية", logo: "/clients/cmw.png" },
 ];
 
 export const PROCESS = [
