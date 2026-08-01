@@ -20,13 +20,43 @@ import Partners from "@/components/Partners";
 import Emergency from "@/components/Emergency";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import Lazy, { mountAllSections } from "@/components/Lazy";
-import { CONTACT } from "@/data/content";
+import Lazy from "@/components/Lazy";
+import { BRAND, CONTACT } from "@/data/content";
 import { WhatsApp } from "@/components/Icons";
 
 export default function App() {
   // Skip the preloader entirely on mobile — it delays first paint by 2s.
   const [ready, setReady] = useState(PERF.lite);
+
+  // Browser-tab icon: prefer an explicitly configured logo, otherwise auto-detect
+  // /favicon.png in public/. The drawn SVG mark stays as the final fallback, so a
+  // missing file never leaves the tab empty.
+  useEffect(() => {
+    const candidates = [BRAND.logoUrl, "/favicon.png"].filter(Boolean) as string[];
+    if (!candidates.length) return;
+    let cancelled = false;
+    (async () => {
+      for (const src of candidates) {
+        try {
+          const res = await fetch(src, { method: "HEAD" });
+          if (!res.ok) continue;
+          if (cancelled) return;
+          document
+            .querySelectorAll<HTMLLinkElement>("link[rel='icon'], link[rel='apple-touch-icon']")
+            .forEach((l) => {
+              l.href = src;
+              if (l.rel === "icon") l.type = src.endsWith(".svg") ? "image/svg+xml" : "image/png";
+            });
+          return;
+        } catch {
+          /* file absent — try the next candidate */
+        }
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     // Native anchor scrolling only on mobile & low-end desktops.
@@ -34,39 +64,23 @@ export default function App() {
       const onClickNative = (e: MouseEvent) => {
         const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
         if (!a) return;
-        const href = a.getAttribute("href");
-        if (!href || href === "#") return;
+        const id = a.getAttribute("href");
+        if (!id || id === "#") return;
+        const target = document.getElementById(id.slice(1));
+        if (!target) return;
         e.preventDefault();
-
-        if (href === "#top") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-          return;
-        }
-
-        // The mobile menu sets body overflow:hidden; clear it immediately so
-        // the scroll below isn't blocked while the overlay animates out.
-        document.body.style.overflow = "";
-
-        // Lazy sections may not be in the DOM yet — force them all to mount,
-        // then scroll on the next frame once layout has settled.
-        mountAllSections();
-
-        const scrollToTarget = (behavior: ScrollBehavior) => {
-          const el = document.querySelector(href);
-          if (!el) return false;
-          const y = (el as HTMLElement).getBoundingClientRect().top + window.scrollY - 72;
-          window.scrollTo({ top: y, behavior });
-          return true;
+        // Defer the scroll: the mobile menu locks body scroll while open and
+        // releases it on the next React commit. Scrolling immediately would be
+        // silently ignored, making menu taps appear dead.
+        const go = () => {
+          const y = target.getBoundingClientRect().top + window.scrollY - 72;
+          window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
         };
-
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            scrollToTarget("smooth");
-            // Sections that just mounted change the page height, so correct
-            // the final position once images/layout have settled.
-            setTimeout(() => scrollToTarget("auto"), 420);
-          });
-        });
+        if (document.body.style.overflow === "hidden") {
+          setTimeout(go, 90);
+        } else {
+          go();
+        }
       };
       document.addEventListener("click", onClickNative);
       return () => document.removeEventListener("click", onClickNative);
@@ -143,46 +157,46 @@ export default function App() {
 
         {/* Everything below gets lazy-mounted on mobile via IntersectionObserver.
             On desktop `disabled` short-circuits to plain rendering. */}
-        <Lazy id="about" disabled={!PERF.lite} minHeight={900}>
+        <Lazy disabled={!PERF.lite} minHeight={900}>
           <About />
         </Lazy>
-        <Lazy id="services" disabled={!PERF.lite} minHeight={1600}>
+        <Lazy disabled={!PERF.lite} minHeight={1600}>
           <Services />
         </Lazy>
-        <Lazy id="systems" disabled={!PERF.lite} minHeight={900}>
+        <Lazy disabled={!PERF.lite} minHeight={900}>
           <Showcase />
         </Lazy>
-        <Lazy id="industries" disabled={!PERF.lite} minHeight={900}>
+        <Lazy disabled={!PERF.lite} minHeight={900}>
           <Industries />
         </Lazy>
-        <Lazy id="why" disabled={!PERF.lite} minHeight={1400}>
+        <Lazy disabled={!PERF.lite} minHeight={1400}>
           <WhyChoose />
         </Lazy>
-        <Lazy id="projects" disabled={!PERF.lite} minHeight={1200}>
+        <Lazy disabled={!PERF.lite} minHeight={1200}>
           <Projects />
         </Lazy>
-        <Lazy id="clients" disabled={!PERF.lite} minHeight={900}>
+        <Lazy disabled={!PERF.lite} minHeight={900}>
           <Clients />
         </Lazy>
-        <Lazy id="certifications" disabled={!PERF.lite} minHeight={900}>
+        <Lazy disabled={!PERF.lite} minHeight={900}>
           <Certifications />
         </Lazy>
-        <Lazy id="team" disabled={!PERF.lite} minHeight={1200}>
+        <Lazy disabled={!PERF.lite} minHeight={1200}>
           <Team />
         </Lazy>
-        <Lazy id="process" disabled={!PERF.lite} minHeight={1400}>
+        <Lazy disabled={!PERF.lite} minHeight={1400}>
           <Process />
         </Lazy>
-        <Lazy id="testimonials" disabled={!PERF.lite} minHeight={700}>
+        <Lazy disabled={!PERF.lite} minHeight={700}>
           <Testimonials />
         </Lazy>
-        <Lazy id="partners" disabled={!PERF.lite} minHeight={500}>
+        <Lazy disabled={!PERF.lite} minHeight={500}>
           <Partners />
         </Lazy>
         <Lazy disabled={!PERF.lite} minHeight={500}>
           <Emergency />
         </Lazy>
-        <Lazy id="contact" disabled={!PERF.lite} minHeight={1000}>
+        <Lazy disabled={!PERF.lite} minHeight={1000}>
           <Contact />
         </Lazy>
       </motion.main>
