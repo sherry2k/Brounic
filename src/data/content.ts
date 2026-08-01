@@ -591,7 +591,7 @@ export const CLIENTS: Client[] = [
   { name: "Al Hosn Gas", abbr: "AL HOSN", color: "#1B75BB", sub: "الحصن للغاز", logo: "/clients/alhosn.png", logoHeight: 72 },
   { name: "SIBCA", abbr: "SIBCA", color: "#E8321F", sub: "سيبكا", logo: "/clients/sibca.png", logoHeight: 80 },
   { name: "Saipem — Eni Group", abbr: "SAIPEM", color: "#1A1E23", logo: "/clients/saipem.png" },
-  { name: "Samsung C&T", abbr: "SAMSUNG", color: "#1428A0", sub: "Engineering & Construction", logo: "/clients/samsung.png", logoHeight: 72 },
+  { name: "Samsung C&T", abbr: "SAMSUNG", color: "#1428A0", sub: "Engineering & Construction", logo: "/clients/samsung.png", logoHeight: 80 },
   { name: "Concorde Technical Est.", abbr: "CONCORDE", color: "#C41F10", logo: "/clients/concorde.png", logoHeight: 80 },
   { name: "Técnicas Reunidas", abbr: "TR", color: "#6B7280", logo: "/clients/tecinas.png" },
   { name: "Masdar City", abbr: "MASDAR", color: "#0E9AA7", logo: "/clients/masdar.png" },
