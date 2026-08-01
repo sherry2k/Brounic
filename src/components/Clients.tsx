@@ -53,7 +53,8 @@ export default function Clients() {
                   alt={`${c.name} logo`}
                   loading="lazy"
                   decoding="async"
-                  className="max-h-14 w-auto max-w-full object-contain opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100"
+                  style={{ maxHeight: c.logoHeight ?? 56 }}
+                  className="w-auto max-w-full object-contain opacity-80 transition-all duration-500 group-hover:scale-105 group-hover:opacity-100"
                 />
               ) : (
                 <div className="flex flex-col items-center text-center">
