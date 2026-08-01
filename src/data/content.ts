@@ -577,11 +577,11 @@ export const ORG_REPORTS = [
 export type Client = { name: string; abbr: string; color: string; sub?: string; logo?: string };
 
 export const CLIENTS: Client[] = [
-  { name: "Abu Dhabi Civil Defence Authority", abbr: "CD", color: "#1A1E23" },
-  { name: "Dept. of Municipalities & Transport", abbr: "DMT", color: "#8B1E2D" },
-  { name: "KIZAD — Khalifa Industrial Zone", abbr: "KIZAD", color: "#C41F10" },
-  { name: "TRANSCO", abbr: "TRANSCO", color: "#2E9E44", sub: "Transmission & Dispatch" },
-  { name: "Musanada", abbr: "مساندة", color: "#7A1F2B", sub: "General Services" },
+  { name: "Abu Dhabi Civil Defence Authority", abbr: "CD", color: "#1A1E23", logo: "/clients/cd.png" },
+  { name: "Dept. of Municipalities & Transport", abbr: "DMT", color: "#8B1E2D", logo: "/clients/dmt.png" },
+  { name: "KIZAD — Khalifa Industrial Zone", abbr: "KIZAD", color: "#C41F10", logo: "/clients/kizad.png" },
+  { name: "TRANSCO", abbr: "TRANSCO", color: "#2E9E44", sub: "Transmission & Dispatch", logo: "/clients/transco.png" },
+  { name: "Musanada", abbr: "مساندة", color: "#7A1F2B", sub: "General Services", logo: "/clients/musanda.png" },
   { name: "TAQA", abbr: "TAQA", color: "#1B75BB", sub: "طاقة", logo: "/clients/taqa.png" },
   { name: "First Gulf Bank", abbr: "FGB", color: "#1B3A6B", sub: "بنك الخليج الأول" },
   { name: "Abu Dhabi Ports", abbr: "PORTS", color: "#123A63", sub: "موانئ أبوظبي" },
