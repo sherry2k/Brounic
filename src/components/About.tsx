@@ -80,9 +80,9 @@ export default function About() {
           <div ref={imgRef} className="relative">
             <motion.div style={{ y: imgY }} className="relative">
               <div className="relative overflow-hidden rounded-[32px] shadow-lux">
-                <img
-                  src={IMG.controlRoom}
-                  alt="Brounic Group engineers monitoring fire protection systems in a control room"
+               <img
+                  src={IMG.aboutUs}
+                  alt="Brounic Group about us"
                   loading="lazy"
                   decoding="async"
                   className="h-[440px] w-full object-cover transition-transform duration-[1400ms] hover:scale-105 sm:h-[520px]"
