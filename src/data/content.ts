@@ -576,26 +576,26 @@ export const ORG_REPORTS = [
 export type Client = { name: string; abbr: string; color: string; sub?: string; logo?: string };
 
 export const CLIENTS: Client[] = [
-  { name: "Abu Dhabi Civil Defence Authority", abbr: "CD", color: "#1A1E23", logo: "/clients/cd.png" },
-  { name: "Dept. of Municipalities & Transport", abbr: "DMT", color: "#8B1E2D", logo: "/clients/dmt.png" },
+  { name: "Abu Dhabi Civil Defence Authority", abbr: "CD", color: "#1A1E23", logo: "/clients/cd.png", logoHeight: 72 },
+  { name: "Dept. of Municipalities & Transport", abbr: "DMT", color: "#8B1E2D", logo: "/clients/dmt.png", logoHeight: 72 },
   { name: "KIZAD — Khalifa Industrial Zone", abbr: "KIZAD", color: "#C41F10", logo: "/clients/kizad.png" },
   { name: "TRANSCO", abbr: "TRANSCO", color: "#2E9E44", sub: "Transmission & Dispatch", logo: "/clients/transco.png", logoHeight: 72 },
-  { name: "Musanada", abbr: "مساندة", color: "#7A1F2B", sub: "General Services", logo: "/clients/musanda.png" },
+  { name: "Musanada", abbr: "مساندة", color: "#7A1F2B", sub: "General Services", logo: "/clients/musanda.png", logoHeight: 72 },
   { name: "TAQA", abbr: "TAQA", color: "#1B75BB", sub: "طاقة", logo: "/clients/taqa.png" },
   { name: "First Gulf Bank", abbr: "FGB", color: "#1B3A6B", sub: "بنك الخليج الأول", logo: "/clients/fgb.png" },
   { name: "Abu Dhabi Ports", abbr: "PORTS", color: "#123A63", sub: "موانئ أبوظبي", logo: "/clients/adp.png", logoHeight: 72 },
   { name: "Hassantuk", abbr: "حصنتك", color: "#2E9E44", sub: "Smart Protection", logo: "/clients/hassantuk.png" },
   { name: "GASCO", abbr: "GASCO", color: "#1B75BB", sub: "Gas Industries Ltd.", logo: "/clients/gasco.png", logoHeight: 72 },
-  { name: "Al Dhafra Co-op Society", abbr: "ADCS", color: "#8A6D3B", logo: "/clients/adcs.png" },
-  { name: "ADCO", abbr: "ADCO", color: "#1B75BB", sub: "Onshore Oil Operations", logo: "/clients/adco.png", logoHeight: 80 },
+  { name: "Al Dhafra Co-op Society", abbr: "ADCS", color: "#8A6D3B", logo: "/clients/adcs.png", logoHeight: 72 },
+  { name: "ADCO", abbr: "ADCO", color: "#1B75BB", sub: "Onshore Oil Operations", logo: "/clients/adco.png", logoHeight: 88 },
   { name: "Al Hosn Gas", abbr: "AL HOSN", color: "#1B75BB", sub: "الحصن للغاز", logo: "/clients/alhosn.png", logoHeight: 72 },
-  { name: "SIBCA", abbr: "SIBCA", color: "#E8321F", sub: "سيبكا", logo: "/clients/sibca.png", logoHeight: 72 },
+  { name: "SIBCA", abbr: "SIBCA", color: "#E8321F", sub: "سيبكا", logo: "/clients/sibca.png", logoHeight: 80 },
   { name: "Saipem — Eni Group", abbr: "SAIPEM", color: "#1A1E23", logo: "/clients/saipem.png" },
   { name: "Samsung C&T", abbr: "SAMSUNG", color: "#1428A0", sub: "Engineering & Construction", logo: "/clients/samsung.png", logoHeight: 72 },
-  { name: "Concorde Technical Est.", abbr: "CONCORDE", color: "#C41F10", logo: "/clients/concorde.png", logoHeight: 72 },
+  { name: "Concorde Technical Est.", abbr: "CONCORDE", color: "#C41F10", logo: "/clients/concorde.png", logoHeight: 80 },
   { name: "Técnicas Reunidas", abbr: "TR", color: "#6B7280", logo: "/clients/tecinas.png" },
   { name: "Masdar City", abbr: "MASDAR", color: "#0E9AA7", logo: "/clients/masdar.png" },
-  { name: "Command of Military Works", abbr: "CMW", color: "#3E6B35", sub: "قيادة الأشغال العسكرية", logo: "/clients/cmw.png" },
+  { name: "Command of Military Works", abbr: "CMW", color: "#3E6B35", sub: "قيادة الأشغال العسكرية", logo: "/clients/cmw.png", logoHeight: 72 },
 ];
 
 export const PROCESS = [
