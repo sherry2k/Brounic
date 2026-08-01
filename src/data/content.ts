@@ -582,7 +582,7 @@ export const CLIENTS: Client[] = [
   { name: "KIZAD — Khalifa Industrial Zone", abbr: "KIZAD", color: "#C41F10" },
   { name: "TRANSCO", abbr: "TRANSCO", color: "#2E9E44", sub: "Transmission & Dispatch" },
   { name: "Musanada", abbr: "مساندة", color: "#7A1F2B", sub: "General Services" },
-  { name: "TAQA", abbr: "TAQA", color: "#1B75BB", sub: "طاقة" },
+  { name: "TAQA", abbr: "TAQA", color: "#1B75BB", sub: "طاقة", logo: "/clients/taqa.png" },
   { name: "First Gulf Bank", abbr: "FGB", color: "#1B3A6B", sub: "بنك الخليج الأول" },
   { name: "Abu Dhabi Ports", abbr: "PORTS", color: "#123A63", sub: "موانئ أبوظبي" },
   { name: "Hassantuk", abbr: "حصنتك", color: "#2E9E44", sub: "Smart Protection" },
