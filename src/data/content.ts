@@ -32,7 +32,8 @@ export const px = (id: number | string, w = 1400) => {
 export const IMG = {
   heroPoster: px(36595991, 1920),
   heroVideo: "https://videos.pexels.com/video-files/35241565/14929934_3840_2160_24fps.mp4",
-  controlRoom: px(32845700, 1600),
+  aboutUs: "/image/aboutus.jpg",
+  aboutus: px(32845700, 1600),
   monitors: px(11783119, 1400),
   engineerFemale: px(3862132, 1400),
   firefighters: px(5964975, 1400),
