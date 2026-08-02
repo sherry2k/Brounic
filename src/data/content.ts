@@ -542,7 +542,7 @@ export const CERTS: Cert[] = [
    {
     code: "HSE Policy",
     name: "Brounic HSE Policy",
-    tone: "amber",
+    tone: "flame",
     scope: "HSE Policy of Brounic Group",
     image: "/certificates/hse.jpg",
     
