@@ -475,7 +475,7 @@ export const CERTS: Cert[] = [
     code: "ICV Certificate",
     name: "In-Country Value Certification",
     issuer: "UAE Ministry of Industry",
-    tone: "ink",
+    tone: "ember",
     no: "ICV-2023-7741",
     scope: "Certified contribution to the UAE's industrial and employment ecosystem.",
     valid: "Issued 2023",
