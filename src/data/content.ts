@@ -532,23 +532,20 @@ export const CERTS: Cert[] = [
     image: "/certificates/alhosn.jpg",
   },
   {
-    code: "TAQA Approval",
-    name: "TAQA Approved Vendor",
-    issuer: "Abu Dhabi National Energy",
+    code: "Quality Policy",
+    name: "Brounic Quality Policy",
     tone: "ember",
-    no: "TQA-V-3356",
-    scope: "Pre-qualified for fire detection and suppression works across TAQA assets.",
-    valid: "Valid through 2026",
-    
+    scope: "Quality Policy of Brounic Group",
+    image: "/certificates/quality.jpg",
+        
   },
    {
-    code: "Trade Licence",
-    name: "Fire Fighting Systems Contracting",
-    issuer: "Abu Dhabi DED",
+    code: "HSE Policy",
+    name: "Brounic HSE Policy",
     tone: "flame",
-    no: "CN-2011-88412",
-    scope: "Commercial licence for fire fighting systems contracting, Abu Dhabi.",
-    valid: "Renewed annually",
+    scope: "HSE Policy of Brounic Group",
+    image: "/certificates/hse.jpg",
+    
   },
 ];
 
