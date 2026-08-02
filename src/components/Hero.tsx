@@ -151,44 +151,46 @@ export default function Hero() {
             Abu Dhabi · UAE — Established 2011
           </motion.div>
 
-           <h1 className="mt-7 font-display font-extrabold tracking-[-0.035em] text-white">
-            {/* Line 1 — company name, largest */}
-            <span className="block overflow-hidden pb-[0.12em]">
+          <h1 className="mt-6 font-display tracking-[-0.035em] text-white">
+            {/* Tier 1 — the brand, oversized */}
+            <span className="block overflow-hidden pb-[0.1em]">
               <motion.span
-                className="block whitespace-nowrap text-[clamp(2.25rem,7.1vw,5.4rem)] leading-[1.12]"
+                className="block text-[2.6rem] leading-[1.05] font-extrabold sm:text-[3.8rem] lg:text-[4.8rem] xl:text-[5.2rem]"
                 initial={{ y: "112%" }}
                 animate={{ y: "0%" }}
-                transition={{ delay: 0.28, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: 0.26, duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
               >
                 Brounic <span className="text-gradient-ember">Group</span>
               </motion.span>
             </span>
 
-            {/* Lines 2-5 — tagline, middle size */}
-            {["Protecting Lives,", "Property & Businesses", "Through Intelligent", "Fire Protection."].map(
-              (line, i) => (
-                <span key={i} className="block overflow-hidden pb-[0.06em]">
-                  <motion.span
-                    className="block text-[1.7rem] leading-[1.12] sm:text-4xl lg:text-[2.9rem]"
-                    initial={{ y: "112%" }}
-                    animate={{ y: "0%" }}
-                    transition={{ delay: 0.4 + i * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                  >
-                    {i === 3 ? <span className="text-ember-400">{line}</span> : <span className="text-white/85">{line}</span>}
-                  </motion.span>
-                </span>
-              ),
-            )}
+            {/* Tier 2 — the promise, mid-size */}
+            <span className="mt-3 block text-[1.28rem] leading-[1.22] font-semibold text-white/85 sm:mt-4 sm:text-[1.62rem] lg:text-[1.95rem]">
+              {["Protecting Lives,", "Property & Businesses", "Through Intelligent", "Fire Protection."].map(
+                (line, i) => (
+                  <span key={i} className="block overflow-hidden pb-[0.08em]">
+                    <motion.span
+                      className="block"
+                      initial={{ y: "112%" }}
+                      animate={{ y: "0%" }}
+                      transition={{ delay: 0.44 + i * 0.08, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      {i === 3 ? <span className="text-ember-400">{line}</span> : line}
+                    </motion.span>
+                  </span>
+                ),
+              )}
+            </span>
           </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.85, duration: 0.9 }}
-            className="mt-7 max-w-2xl text-[15px] leading-relaxed text-white/60 sm:text-lg"
+            className="mt-5 max-w-2xl text-[14px] leading-relaxed text-white/55 sm:text-[15px]"
           >
             End-to-end fire protection engineering for the UAE's most demanding environments — delivered to
-            NFPA Standards and Civil Defence compliance.
+            NFPA, British Standards and Civil Defence compliance.
           </motion.p>
 
           <motion.div
