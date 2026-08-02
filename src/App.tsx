@@ -59,74 +59,22 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    // Native anchor scrolling only on mobile & low-end desktops.
-    if (PERF.lite) {
-      const onClickNative = (e: MouseEvent) => {
-        const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
-        if (!a) return;
-        const id = a.getAttribute("href");
-        if (!id || id === "#") return;
-        const target = document.getElementById(id.slice(1));
-        if (!target) return;
-        e.preventDefault();
-        // Defer the scroll: the mobile menu locks body scroll while open and
-        // releases it on the next React commit. Scrolling immediately would be
-        // silently ignored, making menu taps appear dead.
-        const go = () => {
-          const y = target.getBoundingClientRect().top + window.scrollY - 72;
-          window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
-        };
-        if (document.body.style.overflow === "hidden") {
-          setTimeout(go, 90);
-        } else {
-          go();
-        }
-      };
-      document.addEventListener("click", onClickNative);
-      return () => document.removeEventListener("click", onClickNative);
-    }
-
-    let cleanup: (() => void) | undefined;
-    let cancelled = false;
-    import("lenis").then(({ default: Lenis }) => {
-      if (cancelled) return;
-      const lenis = new Lenis({
-        duration: 1.15,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smoothWheel: true,
-        touchMultiplier: 1.6,
-      });
-
-      let raf = 0;
-      const loop = (time: number) => {
-        lenis.raf(time);
-        raf = requestAnimationFrame(loop);
-      };
-      raf = requestAnimationFrame(loop);
-
-      const onClick = (e: MouseEvent) => {
-        const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
-        if (!a) return;
-        const id = a.getAttribute("href");
-        if (!id || id === "#") return;
-        const el = document.querySelector(id);
-        if (!el) return;
-        e.preventDefault();
-        lenis.scrollTo(el as HTMLElement, { offset: id === "#top" ? 0 : -80, duration: 1.35 });
-      };
-      document.addEventListener("click", onClick);
-
-      cleanup = () => {
-        document.removeEventListener("click", onClick);
-        cancelAnimationFrame(raf);
-        lenis.destroy();
-      };
-    });
-
-    return () => {
-      cancelled = true;
-      cleanup?.();
+    // Native smooth-scroll for all anchor links (mobile + low-end desktop).
+    // The Nav mobile menu now handles scroll directly in its onclick,
+    // so this listener serves as a safe catch-all for any other links.
+    const handleAnchor = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement | null)?.closest<HTMLAnchorElement>('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute("href");
+      if (!id || id === "#") return;
+      const target = document.getElementById(id.slice(1));
+      if (!target) return;
+      e.preventDefault();
+      const y = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
     };
+    document.addEventListener("click", handleAnchor);
+    return () => document.removeEventListener("click", handleAnchor);
   }, []);
 
   useEffect(() => {
