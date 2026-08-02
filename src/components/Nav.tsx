@@ -131,7 +131,7 @@ export default function Nav() {
                 onClick={() => setOpen(true)}
                 aria-label="Open menu"
                 className={cn(
-                  "flex h-10 w-10 items-center justify-center rounded-xl border transition-colors lg:hidden",
+                  "flex h-10 w-10 items-center justify-center rounded-xl border transition-colors xl:hidden",
                   scrolled ? "border-ink-200 text-ink-800" : "border-white/18 text-white",
                 )}
               >
@@ -156,7 +156,7 @@ export default function Nav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[120] bg-ink-950/95 backdrop-blur-xl lg:hidden"
+            className="fixed inset-0 z-[120] bg-ink-950/95 backdrop-blur-xl xl:hidden"
           >
             <div className="container-x flex h-full flex-col py-6">
               <div className="flex items-center justify-between">
@@ -174,12 +174,24 @@ export default function Nav() {
                 </button>
               </div>
 
-              <nav className="mt-12 flex flex-col gap-1 overflow-y-auto">
+              <nav className="mt-12 flex flex-col gap-1 overflow-y-auto" aria-label="Mobile navigation">
                 {NAV.map((item, i) => (
-                  <motion.a
+                    <motion.a
                     key={item.href}
                     href={item.href}
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {
+                      // Always close the overlay immediately on any tap
+                      setOpen(false);
+                      // Manually scroll to the section. The App-level listener
+                      // runs on document; we trigger it explicitly for reliability.
+                      const id = item.href.slice(1);
+                      const target = document.getElementById(id);
+                      if (target) {
+                        e.preventDefault();
+                        const y = target.getBoundingClientRect().top + window.scrollY - 72;
+                        window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+                      }
+                    }}
                     initial={{ opacity: 0, x: -24 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.06 * i, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
