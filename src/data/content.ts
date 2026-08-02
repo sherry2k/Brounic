@@ -15,6 +15,7 @@ export const BRAND = {
    *  2. Paste the key string below (e.g. "a1b2c3d4-e5f6-...")
    *  If empty, the form will simulate submission and show the thank-you screen. */
   web3FormsKey: "",
+  profilePdf: "/brounic-company-profile.pdf",
 };
 
 /**
