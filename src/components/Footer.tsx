@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState } from "react";
-import { CONTACT } from "@/data/content";
+import { BRAND, CONTACT } from "@/data/content";
 import { Logo } from "./Logo";
 import { ArrowRight, Check, LinkedIn, Mail, Phone, Pin, WhatsApp } from "./Icons";
 
@@ -17,6 +17,8 @@ const FOOTER_ANCHORS: Record<string, string> = {
   "AMC & Maintenance": "#services",
   "Featured Projects": "#projects",
   Certifications: "#certifications",
+  "Company Profile (PDF)": "/brounic-company-profile.pdf",
+  Downloads: "/brounic-company-profile.pdf",
 };
 
 const COLS = [
@@ -60,9 +62,7 @@ export default function Footer() {
         {/* Newsletter */}
         <div className="grid gap-10 border-b border-white/8 pb-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
-            <span className="inline-flex rounded-xl bg-white/95 px-3 py-2 shadow-sm">
-              <Logo />
-            </span>
+            <Logo dark />
             <p className="mt-6 max-w-md text-[14px] leading-relaxed text-white/45">
               Brounic Group delivers intelligent, economical fire protection solutions that minimise fire risk and
               safeguard lives, property and business continuity across the United Arab Emirates.
@@ -77,6 +77,32 @@ export default function Footer() {
                 </span>
               ))}
             </div>
+
+            {/* Company profile download */}
+            <a
+              href={BRAND.profilePdf}
+              download
+              target="_blank"
+              rel="noreferrer"
+              className="group mt-7 inline-flex items-center gap-3 overflow-hidden rounded-full border border-ember-500/40 bg-ember-500/10 px-6 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 hover:border-ember-500 hover:bg-ember-500 hover:shadow-ember"
+            >
+              <svg
+                className="h-4 w-4 text-ember-400 transition-colors group-hover:text-white"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 3v12m0 0 4-4m-4 4-4-4" />
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+              </svg>
+              Download Company Profile
+              <span className="text-[10px] font-semibold tracking-[0.14em] text-white/40 uppercase group-hover:text-white/70">
+                PDF
+              </span>
+            </a>
           </div>
 
           <div className="rounded-[26px] border border-white/8 bg-white/[0.03] p-7 backdrop-blur-sm">
