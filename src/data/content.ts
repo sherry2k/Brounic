@@ -667,10 +667,10 @@ export const PARTNERS = [
 export const CONTACT = {
   address: "Industrial Area, Al Dhafra Region, Abu Dhabi, United Arab Emirates",
   phone: "+971 52 691 1291",
-  phoneHref: "tel:+97158 104 3989",
-  emergency: "+971 58 104 3989",
+  phoneHref: "tel:+97158 104 3987",
+  emergency: "+971 58 104 3987",
   emergencyHref: "tel:+971581043987",
-  whatsappHref: "https://wa.me/971581043989",
+  whatsappHref: "https://wa.me/971526838234",
 
   email: "info@brounic.com",
   hours: "Sun – Thu · 8:00 AM – 6:00 PM  |  Emergency desk 24/7",
