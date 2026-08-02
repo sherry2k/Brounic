@@ -278,7 +278,7 @@ export default function Contact() {
               <div className="group relative flex-1 overflow-hidden rounded-[32px] border border-ink-100 shadow-lux">
                 <iframe
                   title="Brounic Group office location — Al Dhafra Region, Abu Dhabi"
-                  src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d646.0108240069251!2d53.73254616837965!3d23.66204024614598!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sae!4v1785520683536!5m2!1sen!2sae"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.5918541153433!2d53.732809!3d23.6547835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e67670077219e7b%3A0xb20c2ec67cc70f73!2sBrounic%20Gen.%20Transport%20%26%20Contracting!5e0!3m2!1sen!2sae!4v1785686191108!5m2!1sen!2sae"
                   className="h-[280px] w-full grayscale transition-all duration-700 group-hover:grayscale-0"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
