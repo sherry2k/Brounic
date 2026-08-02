@@ -151,17 +151,29 @@ export default function Hero() {
             Abu Dhabi · UAE — Established 2011
           </motion.div>
 
-          <h1 className="mt-7 font-display text-[2.55rem] leading-[1.03] font-extrabold tracking-[-0.035em] text-white sm:text-6xl lg:text-[4.6rem]">
+          <h1 className="mt-7 font-display font-extrabold tracking-[-0.035em] text-white">
+            {/* Line 1 — company name, largest */}
+            <span className="block overflow-hidden pb-[0.08em]">
+              <motion.span
+                className="block text-[3rem] leading-[1.02] sm:text-7xl lg:text-[5.4rem]"
+                initial={{ y: "112%" }}
+                animate={{ y: "0%" }}
+                transition={{ delay: 0.28, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              >
+                Brounic <span className="text-gradient-ember">Group</span>
+              </motion.span>
+            </span>
+            {/* Lines 2-5 — tagline, middle size */}
             {["Protecting Lives,", "Property & Businesses", "Through Intelligent", "Fire Protection."].map(
               (line, i) => (
                 <span key={i} className="block overflow-hidden pb-[0.06em]">
                   <motion.span
-                    className="block"
+                    className="block text-[1.7rem] leading-[1.12] sm:text-4xl lg:text-[2.9rem]"
                     initial={{ y: "112%" }}
                     animate={{ y: "0%" }}
-                    transition={{ delay: 0.28 + i * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                    transition={{ delay: 0.4 + i * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
                   >
-                    {i === 3 ? <span className="text-gradient-ember">{line}</span> : line}
+                    {i === 3 ? <span className="text-ember-400">{line}</span> : <span className="text-white/85">{line}</span>}
                   </motion.span>
                 </span>
               ),
