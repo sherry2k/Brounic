@@ -495,7 +495,7 @@ export const CERTS: Cert[] = [
     code: "ADDC Approval",
     name: "Registered Electrical & Fire Contractor",
     issuer: "Abu Dhabi Distribution Company",
-    tone: "ember",
+    tone: "ink",
     no: "ADDC-V-2231",
     scope: "Registered contractor for works within ADDC service territory.",
     valid: "Valid through 2026",
@@ -505,7 +505,7 @@ export const CERTS: Cert[] = [
     code: "FGB Registration",
     name: "First Gulf Bank — Approved Vendor",
     issuer: "First Gulf Bank PJSC",
-    tone: "ink",
+    tone: "ember",
     no: "FGB-SUP-0481",
     scope: "Vendor registration for fire protection works across FGB branch and HQ facilities.",
     valid: "Active registration",
@@ -515,7 +515,7 @@ export const CERTS: Cert[] = [
     code: "GASCO Approval",
     name: "Abu Dhabi Gas Industries — Approved",
     issuer: "GASCO Ltd.",
-    tone: "flame",
+    tone: "ink",
     no: "GSC-HSE-1120",
     scope: "Approved for fire & safety works at GASCO plants and installations.",
     valid: "Active registration",
@@ -525,7 +525,7 @@ export const CERTS: Cert[] = [
     code: "Al Hosn Gas",
     name: "Al Hosn Gas Registration",
     issuer: "Abu Dhabi Gas Development Co.",
-    tone: "ink",
+    tone: "flame",
     no: "AHG-V-0097",
     scope: "Registered contractor for fire protection maintenance at Al Hosn Gas facilities.",
     valid: "Active registration",
@@ -534,7 +534,7 @@ export const CERTS: Cert[] = [
   {
     code: "Quality Policy",
     name: "Brounic Quality Policy",
-    tone: "ember",
+    tone: "ink",
     scope: "Quality Policy of Brounic Group",
     image: "/certificates/quality.jpg",
         
@@ -542,7 +542,7 @@ export const CERTS: Cert[] = [
    {
     code: "HSE Policy",
     name: "Brounic HSE Policy",
-    tone: "flame",
+    tone: "amber",
     scope: "HSE Policy of Brounic Group",
     image: "/certificates/hse.jpg",
     
