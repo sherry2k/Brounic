@@ -151,11 +151,11 @@ export default function Hero() {
             Abu Dhabi · UAE — Established 2011
           </motion.div>
 
-          <h1 className="mt-7 font-display font-extrabold tracking-[-0.035em] text-white">
+           <h1 className="mt-7 font-display font-extrabold tracking-[-0.035em] text-white">
             {/* Line 1 — company name, largest */}
-            <span className="block overflow-hidden pb-[0.08em]">
+            <span className="block overflow-hidden pb-[0.12em]">
               <motion.span
-                className="block text-[3rem] leading-[1.02] sm:text-7xl lg:text-[5.4rem]"
+                className="block whitespace-nowrap text-[clamp(2.25rem,7.1vw,5.4rem)] leading-[1.12]"
                 initial={{ y: "112%" }}
                 animate={{ y: "0%" }}
                 transition={{ delay: 0.28, duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -163,6 +163,7 @@ export default function Hero() {
                 Brounic <span className="text-gradient-ember">Group</span>
               </motion.span>
             </span>
+
             {/* Lines 2-5 — tagline, middle size */}
             {["Protecting Lives,", "Property & Businesses", "Through Intelligent", "Fire Protection."].map(
               (line, i) => (
