@@ -571,7 +571,7 @@ export const TEAM = [
 
 /* Reporting line under the General Manager — mirrors the company profile org chart */
 export const ORG_REPORTS = [
-  { role: "Secretary", icon: "mail" },
+  { role: "HR", icon: "mail" },
   { role: "Engineering Manager", icon: "design" },
   { role: "Projects Head", icon: "install" },
 ];
