@@ -49,8 +49,9 @@ function ServiceCard({ s, i }: { s: Service; i: number }) {
 
       <div className="relative">
         <div className="relative inline-flex">
-          <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-ember-400 to-flame-500 opacity-0 blur-lg transition-opacity duration-500 group-hover:opacity-45" />
-          <span className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-ink-100 bg-gradient-to-br from-white to-ink-50 text-ink-800 shadow-sm transition-all duration-500 group-hover:border-ember-500/30 group-hover:text-ember-600">
+          <span className="absolute inset-0 rounded-2xl bg-gradient-to-br from-ember-400 to-flame-500 opacity-0 blur-lg transition-opacity duration-500 group-hover:opacity-40" />
+          {/* Default: orange tile + white icon. Hover: white tile + orange icon. */}
+          <span className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-ember-500/40 bg-gradient-to-br from-ember-500 to-ember-600 text-white shadow-ember transition-all duration-500 group-hover:border-ember-500/50 group-hover:from-white group-hover:to-white group-hover:text-ember-600 group-hover:shadow-lux">
             <SystemIcon name={s.key} className="h-7 w-7" />
           </span>
         </div>
