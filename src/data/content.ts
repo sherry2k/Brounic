@@ -482,6 +482,16 @@ export const CERTS: Cert[] = [
     valid: "Issued 2023",
     image: "/certificates/icv.jpg",
   },
+    {
+    code: "TAQA Approval",
+    name: "TAQA Approved Vendor",
+    issuer: "Abu Dhabi National Energy",
+    tone: "ember",
+    no: "TQA-V-3356",
+    scope: "Pre-qualified for fire detection and suppression works across TAQA assets.",
+    valid: "Valid through 2026",
+    image: "/certificates/addc.jpg",
+  },
   {
     code: "Civil Defence",
     name: "Approved Fire Fighting Contractor",
@@ -491,16 +501,6 @@ export const CERTS: Cert[] = [
     scope: "Approved for design, installation, testing, commissioning and maintenance of fire fighting systems.",
     valid: "Renewed annually",
     image: "/certificates/adcd.jpg",
-  },
-  {
-    code: "TAQA Approval",
-    name: "TAQA Approved Vendor",
-    issuer: "Abu Dhabi National Energy",
-    tone: "ember",
-    no: "TQA-V-3356",
-    scope: "Pre-qualified for fire detection and suppression works across TAQA assets.",
-    valid: "Valid through 2026",
-    image: "/certificates/addc.jpg",
   },
   {
     code: "FGB Registration",
