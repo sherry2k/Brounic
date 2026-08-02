@@ -105,46 +105,46 @@ export default function App() {
 
         {/* Everything below gets lazy-mounted on mobile via IntersectionObserver.
             On desktop `disabled` short-circuits to plain rendering. */}
-        <Lazy disabled={!PERF.lite} minHeight={900}>
+        <Lazy disabled={!PERF.lite} minHeight={900} id="about">
           <About />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={1600}>
+        <Lazy disabled={!PERF.lite} minHeight={1600} id="services">
           <Services />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={900}>
+        <Lazy disabled={!PERF.lite} minHeight={900} id="systems">
           <Showcase />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={900}>
+        <Lazy disabled={!PERF.lite} minHeight={900} id="industries">
           <Industries />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={1400}>
+        <Lazy disabled={!PERF.lite} minHeight={1400} id="why">
           <WhyChoose />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={1200}>
+        <Lazy disabled={!PERF.lite} minHeight={1200} id="projects">
           <Projects />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={900}>
+        <Lazy disabled={!PERF.lite} minHeight={900} id="clients">
           <Clients />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={900}>
+        <Lazy disabled={!PERF.lite} minHeight={900} id="certifications">
           <Certifications />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={1200}>
+        <Lazy disabled={!PERF.lite} minHeight={1200} id="team">
           <Team />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={1400}>
+        <Lazy disabled={!PERF.lite} minHeight={1400} id="process">
           <Process />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={700}>
+        <Lazy disabled={!PERF.lite} minHeight={700} id="testimonials">
           <Testimonials />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={500}>
+        <Lazy disabled={!PERF.lite} minHeight={500} id="partners">
           <Partners />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={500}>
+        <Lazy disabled={!PERF.lite} minHeight={500} id="emergency">
           <Emergency />
         </Lazy>
-        <Lazy disabled={!PERF.lite} minHeight={1000}>
+        <Lazy disabled={!PERF.lite} minHeight={1000} id="contact">
           <Contact />
         </Lazy>
       </motion.main>
