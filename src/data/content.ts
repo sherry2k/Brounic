@@ -486,7 +486,7 @@ export const CERTS: Cert[] = [
     code: "TAQA Approval",
     name: "TAQA Approved Vendor",
     issuer: "Abu Dhabi National Energy",
-    tone: "ember",
+    tone: "ink",
     no: "TQA-V-3356",
     scope: "Pre-qualified for fire detection and suppression works across TAQA assets.",
     valid: "Valid through 2026",
