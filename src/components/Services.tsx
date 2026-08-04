@@ -172,7 +172,7 @@ export default function Services() {
                 </p>
               </div>
               <a
-                href="#contact"
+                href="https://wa.me/971526838234"
                 className="group relative inline-flex shrink-0 items-center gap-2.5 overflow-hidden rounded-full px-7 py-3.5 text-sm font-semibold text-white shadow-ember"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-ember-600 via-ember-500 to-flame-500 anim-pan" />
