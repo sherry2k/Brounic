@@ -191,7 +191,7 @@ export const SERVICES: Service[] = [
     detail:
       "Risk-matched portable extinguisher programmes — CO₂, dry powder, foam, water and wet chemical — with scheduled inspection and refill logistics.",
     points: ["Class A–F risk matching", "Monthly & annual inspection", "Hydro-testing & refilling", "Digital asset tagging"],
-    img: px(12072478, 800),
+    img: "/services/extinguisher.jpg",
   },
   {
     key: "call-point",
@@ -218,7 +218,7 @@ export const SERVICES: Service[] = [
     detail:
       "Turnkey pump room delivery — pump selection, suction/discharge headers, controllers, tanks and annual NFPA 25 performance testing.",
     points: ["UL / FM listed pump sets", "Diesel & electric duty", "Controller & ATS integration", "NFPA 25 flow testing"],
-    img: IMG.pipesGauge,
+    img: "/services/firepump.jpg",
   },
   {
     key: "hose-reel",
