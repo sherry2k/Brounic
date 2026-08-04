@@ -155,7 +155,7 @@ export const SERVICES: Service[] = [
     detail:
       "Full lifecycle delivery of automatic sprinkler protection — from hazard classification and hydraulic calculation to pipe fabrication, installation and flushing.",
     points: ["NFPA 13 hydraulic design", "Wet / dry / pre-action / deluge", "Grooved & welded fabrication", "Flow test & witness handover"],
-    img: IMG.ceilingRed,
+    img: "/services/sprinkler.jpg",
   },
   {
     key: "alarm",
@@ -164,7 +164,7 @@ export const SERVICES: Service[] = [
     detail:
       "Intelligent addressable fire detection engineered around your building's risk profile, with full integration into BMS, access control and voice evacuation.",
     points: ["Addressable & conventional panels", "Aspirating & beam detection", "Graphic monitoring stations", "Civil Defence Hassantuk linkage"],
-    img: IMG.heroPoster,
+    img: "/services/firealarm.jpg",
   },
   {
     key: "emergency-light",
@@ -227,7 +227,7 @@ export const SERVICES: Service[] = [
     detail:
       "Swinging and fixed hose reel assemblies within architectural cabinets, hydro-tested and integrated with the wet riser network.",
     points: ["30m swinging reels", "Architect-matched cabinets", "Hydrostatic testing", "Nozzle & valve servicing"],
-    img: px(189474, 800),
+    img: "/services/hosereel.jpg",
   },
   {
     key: "pava",
