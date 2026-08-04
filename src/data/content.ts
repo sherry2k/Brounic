@@ -182,7 +182,7 @@ export const SERVICES: Service[] = [
     detail:
       "Clear, code-compliant egress signage that performs in smoke-logged conditions — specified, installed and certified to UAE Fire & Life Safety Code.",
     points: ["Maintained & non-maintained", "Photoluminescent wayfinding", "Directional escape planning", "Visibility distance compliance"],
-    img: IMG.safetySigns,
+    img: "/services/exit.png",
   },
   {
     key: "extinguisher",
