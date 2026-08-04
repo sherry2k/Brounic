@@ -62,8 +62,7 @@ export default function Footer() {
         {/* Newsletter */}
         <div className="grid gap-10 border-b border-white/8 pb-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
-            <Logo dark />
-             <div className="inline-flex rounded-2xl bg-white px-4 py-3 shadow-[0_10px_35px_-12px_rgba(0,0,0,0.65)] ring-1 ring-white/20">
+            <div className="inline-flex rounded-2xl bg-white px-4 py-3 shadow-[0_10px_35px_-12px_rgba(0,0,0,0.65)] ring-1 ring-white/20">
               <Logo />
             </div>
             <p className="mt-6 max-w-md text-[14px] leading-relaxed text-white/45">
