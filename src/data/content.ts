@@ -14,7 +14,7 @@ export const BRAND = {
    *  1. Get a free key at: https://web3forms.com (takes 10 seconds, no sign-up)
    *  2. Paste the key string below (e.g. "a1b2c3d4-e5f6-...")
    *  If empty, the form will simulate submission and show the thank-you screen. */
-  web3FormsKey: "",
+  web3FormsKey: "c6549307-9994-410b-9037-9224e4b01996",
   profilePdf: "/brounic-company-profile.pdf",
 };
 
