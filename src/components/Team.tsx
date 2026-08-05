@@ -73,7 +73,7 @@ export default function Team() {
                   <div className="relative flex flex-1 flex-col justify-center p-7 sm:p-9">
                     <span className="absolute right-6 top-6 flex gap-2">
                       <a
-                        href="https://www.linkedin.com/company/brounic-group"
+                        href="https://ae.linkedin.com/in/brounic-group-5b7484269?trk=people-guest_people_search-card"
                         aria-label={`${m.name} on LinkedIn`}
                         className="flex h-8 w-8 items-center justify-center rounded-full border border-ink-200 text-ink-400 transition-all hover:border-ember-500 hover:bg-ember-500 hover:text-white"
                       >
