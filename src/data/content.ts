@@ -173,7 +173,7 @@ export const SERVICES: Service[] = [
     detail:
       "Photometric-designed emergency lighting ensuring compliant lux levels along every escape route, with central battery or self-contained luminaires.",
     points: ["Photometric lux modelling", "Central & self-contained units", "90-minute autonomy testing", "Annual discharge certification"],
-    img: IMG.ceilingRed,
+    img: "/services/emergencylight.jpg",
   },
   {
     key: "exit",
@@ -182,7 +182,7 @@ export const SERVICES: Service[] = [
     detail:
       "Clear, code-compliant egress signage that performs in smoke-logged conditions — specified, installed and certified to UAE Fire & Life Safety Code.",
     points: ["Maintained & non-maintained", "Photoluminescent wayfinding", "Directional escape planning", "Visibility distance compliance"],
-    img: "/services/exit.png",
+    img: "/services/exit.jpg",
   },
   {
     key: "extinguisher",
@@ -200,7 +200,7 @@ export const SERVICES: Service[] = [
     detail:
       "Strategically located manual initiation devices with weatherproof and hazardous-area variants, fully addressable and individually annunciated.",
     points: ["Addressable & conventional", "IP-rated external variants", "Travel-distance compliance", "Loop testing & labelling"],
-    img: IMG.emergencyButton,
+    img: "/services/callpoints.jpg",
   },
   {
     key: "hydrant",
