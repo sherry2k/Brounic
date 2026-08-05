@@ -332,7 +332,7 @@ export const SYSTEMS = [
 
 export const INDUSTRIES = [
   { name: "Commercial Buildings", img: IMG.skylineDay, count: "50+" },
-  { name: "Industrial Plants", img: IMG.factorySunset, count: "30+" },
+  { name: "Industrial Plants", img: "/projects/industrial.jpg", count: "30+" },
   { name: "Factories", img: IMG.steelPlant, count: "40+" },
   { name: "Oil & Gas", img: IMG.refinery, count: "30+" },
   { name: "Warehouses", img: IMG.containers, count: "50+" },
@@ -395,8 +395,8 @@ export const PROJECTS: Project[] = [
     img: IMG.refineryNight,
   },
   {
-    title: "Labor Camp",
-    category: "Labor Camp",
+    title: "Industrial Plant ",
+    category: "Industrial",
     location: "Habshan, Abu Dhabi",
     system: "Fire Alarm, Fire Fighting",
     date: "Completed 2023",
@@ -425,7 +425,7 @@ export const PROJECTS: Project[] = [
     location: "Habshan, Abu Dhabi",
     system: "Fire Alarm · Fire Fighting",
     date: "Completed 2024",
-    img: "/projects/laborcamp2.jpg",
+    img: "/projects/laborcamp.jpg",
   },
   {
     title: "TAQA Substation Upgrade",
