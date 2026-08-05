@@ -200,7 +200,7 @@ export const SERVICES: Service[] = [
     detail:
       "Strategically located manual initiation devices with weatherproof and hazardous-area variants, fully addressable and individually annunciated.",
     points: ["Addressable & conventional", "IP-rated external variants", "Travel-distance compliance", "Loop testing & labelling"],
-    img: "/services/callpoints.jpg",
+    img: "/services/callpoint.jpg",
   },
   {
     key: "hydrant",
