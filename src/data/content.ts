@@ -379,12 +379,12 @@ export const PROJECTS: Project[] = [
     span: "md:col-span-2 md:row-span-2",
   },
   {
-    title: "Mussafah Process Plant",
-    category: "Industrial",
-    location: "Mussafah, Abu Dhabi",
-    system: "Foam Deluge · Hydrant Ring · Fire Pumps",
+    title: "Residential Building",
+    category: "Residential",
+    location: "Downtown, Abu Dhabi",
+    system: "Fire Alarm · Fire Fighting",
     date: "Completed 2023",
-    img: IMG.factorySunset,
+    img: "/projects/residential.jpg",
   },
   {
     title: "ADNOC Support Facility",
