@@ -400,7 +400,7 @@ export const PROJECTS: Project[] = [
     location: "Habshan, Abu Dhabi",
     system: "Fire Alarm, Fire Fighting",
     date: "Completed 2023",
-    img: "/projects/laborcamp.jpg",
+    img: "/projects/laborcamp1.jpg",
     span: "md:col-span-2",
   },
   {
