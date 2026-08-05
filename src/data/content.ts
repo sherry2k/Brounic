@@ -338,7 +338,7 @@ export const INDUSTRIES = [
   { name: "Warehouses", img: IMG.containers, count: "50+" },
   { name: "Hospitals", img: IMG.monitors, count: "15+" },
   { name: "Hotels", img: IMG.waterfront, count: "25+" },
-  { name: "Schools", img: IMG.mosqueCity, count: "15+" },
+  { name: "Schools", img: "/projects/school.jpg", count: "15+" },
   { name: "Shopping Malls", img: IMG.skylineNight, count: "10+" },
   { name: "Residential", img: IMG.skylineFlag, count: "80+" },
   { name: "Government", img: IMG.plantTank, count: "18+" },
