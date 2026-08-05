@@ -342,7 +342,7 @@ export const INDUSTRIES = [
   { name: "Shopping Malls", img: IMG.skylineNight, count: "10+" },
   { name: "Residential", img: IMG.skylineFlag, count: "80+" },
   { name: "Government", img: IMG.plantTank, count: "18+" },
-  { name: "Labor Camps", img: "/projects/laborcamp.jpg", count: "10+" },
+  { name: "Labor Camps", img: "/projects/laborcamp.jpg", count: "20+" },
 ];
 
 export const WHY = [
@@ -360,7 +360,7 @@ export const WHY = [
 
 export type Project = {
   title: string;
-  category: "Commercial" | "Industrial" | "Residential" | "Labor Camps" | "Oil & Gas" | "Government";
+  category: "Commercial" | "Industrial" | "Residential" | "Oil & Gas" | "Labor Camps";
   location: string;
   system: string;
   date: string;
