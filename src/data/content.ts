@@ -331,18 +331,18 @@ export const SYSTEMS = [
 ];
 
 export const INDUSTRIES = [
-  { name: "Commercial Buildings", img: IMG.skylineDay, count: "260+" },
-  { name: "Industrial Plants", img: IMG.factorySunset, count: "140+" },
-  { name: "Factories", img: IMG.steelPlant, count: "95+" },
-  { name: "Oil & Gas", img: IMG.refinery, count: "48+" },
-  { name: "Warehouses", img: IMG.containers, count: "120+" },
-  { name: "Hospitals", img: IMG.monitors, count: "34+" },
-  { name: "Hotels", img: IMG.waterfront, count: "52+" },
-  { name: "Schools", img: IMG.mosqueCity, count: "63+" },
-  { name: "Shopping Malls", img: IMG.skylineNight, count: "27+" },
-  { name: "Residential", img: IMG.skylineFlag, count: "180+" },
-  { name: "Government", img: IMG.plantTank, count: "41+" },
-  { name: "Labor Camps", img: IMG.controlRoom, count: "18+" },
+  { name: "Commercial Buildings", img: IMG.skylineDay, count: "50+" },
+  { name: "Industrial Plants", img: IMG.factorySunset, count: "30+" },
+  { name: "Factories", img: IMG.steelPlant, count: "40+" },
+  { name: "Oil & Gas", img: IMG.refinery, count: "30+" },
+  { name: "Warehouses", img: IMG.containers, count: "50+" },
+  { name: "Hospitals", img: IMG.monitors, count: "15+" },
+  { name: "Hotels", img: IMG.waterfront, count: "25+" },
+  { name: "Schools", img: IMG.mosqueCity, count: "15+" },
+  { name: "Shopping Malls", img: IMG.skylineNight, count: "10+" },
+  { name: "Residential", img: IMG.skylineFlag, count: "80+" },
+  { name: "Government", img: IMG.plantTank, count: "18+" },
+  { name: "Labor Camps", img: "/projects/laborcamp.jpg", count: "10+" },
 ];
 
 export const WHY = [
@@ -407,7 +407,7 @@ export const PROJECTS: Project[] = [
     title: "Pinnacle American School",
     category: "School",
     location: "Madinat Zayed,Abu Dhabi - UAE",
-    system: "Fire Alaram, Fire fighting",
+    system: "Fire Alaram · Fire fighting",
     date: "Completed 2025",
     img: "/projects/school.jpg",
   },
@@ -420,12 +420,12 @@ export const PROJECTS: Project[] = [
     img: IMG.containers,
   },
   {
-    title: "Marina Hospitality Tower",
-    category: "Commercial",
-    location: "Al Maryah, Abu Dhabi",
-    system: "Watermist · Kitchen Suppression · PA/VA",
-    date: "Completed 2021",
-    img: IMG.waterfront,
+    title: "Labor Camp",
+    category: "Labor Camp",
+    location: "Habshan, Abu Dhabi",
+    system: "Fire Alarm · Fire Fighting",
+    date: "Completed 2024",
+    img: "/projects/laborcamp2.jpg",
   },
   {
     title: "TAQA Substation Upgrade",
