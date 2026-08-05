@@ -39,7 +39,7 @@ const COLS = [
   },
   {
     title: "Resources",
-    links: ["Featured Projects", "Certifications", "Company Profile (PDF)", "Datasheets", "Downloads", "FAQ"],
+    links: ["Featured Projects", "Certifications", "Company Profile (PDF)", "Downloads", "FAQ"],
   },
   {
     title: "Legal",
