@@ -360,7 +360,7 @@ export const WHY = [
 
 export type Project = {
   title: string;
-  category: "Commercial" | "Industrial" | "Residential" | "Oil & Gas" | "Labor Camps";
+  category: "Commercial" | "Industrial" | "Residential" | "Oil & Gas" | "Labor Camp";
   location: string;
   system: string;
   date: string;
