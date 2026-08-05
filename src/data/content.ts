@@ -342,7 +342,7 @@ export const INDUSTRIES = [
   { name: "Shopping Malls", img: IMG.skylineNight, count: "27+" },
   { name: "Residential", img: IMG.skylineFlag, count: "180+" },
   { name: "Government", img: IMG.plantTank, count: "41+" },
-  { name: "Data Centres", img: IMG.controlRoom, count: "18+" },
+  { name: "Labor Camps", img: IMG.controlRoom, count: "18+" },
 ];
 
 export const WHY = [
@@ -360,7 +360,7 @@ export const WHY = [
 
 export type Project = {
   title: string;
-  category: "Commercial" | "Industrial" | "Residential" | "Oil & Gas" | "Government";
+  category: "Commercial" | "Industrial" | "Residential" | "Labor Camp" | "Oil & Gas" | "Government";
   location: string;
   system: string;
   date: string;
@@ -396,7 +396,7 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Labor Camp",
-    category: "Residential",
+    category: "Labor Camp",
     location: "Habshan, Abu Dhabi",
     system: "Fire Alarm, Fire Fighting",
     date: "Completed 2023",
