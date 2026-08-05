@@ -182,7 +182,7 @@ export default function Footer() {
             </div>
             <div className="mt-6 flex gap-2.5">
               {[
-                { i: <LinkedIn className="h-4 w-4" />, href: "https://www.linkedin.com/company/brounic-group", l: "LinkedIn" },
+                { i: <LinkedIn className="h-4 w-4" />, href: "https://ae.linkedin.com/in/brounic-group-5b7484269?trk=people-guest_people_search-card", l: "LinkedIn" },
                 { i: <WhatsApp className="h-4 w-4" />, href: CONTACT.whatsappHref, l: "WhatsApp" },
                 { i: <Mail className="h-4 w-4" />, href: `mailto:${CONTACT.email}`, l: "Email" },
                 { i: <Phone className="h-4 w-4" />, href: CONTACT.phoneHref, l: "Call" },
