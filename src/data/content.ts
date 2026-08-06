@@ -673,7 +673,7 @@ export const CONTACT = {
   whatsappHref: "https://wa.me/971526838234",
 
   email: "info@brounic.com",
-  hours: "Sun – Thu · 8:00 AM – 6:00 PM  |  Emergency desk 24/7",
+  hours: "Mob – Fri · 8:00 AM – 4:00 PM  |  Emergency desk 24/7",
   mapSrc:
     "https://www.openstreetmap.org/export/embed.html?bbox=54.4650%2C24.3400%2C54.5450%2C24.3950&layer=mapnik&marker=24.3675%2C54.5050",
   mapLink: "https://www.google.com/maps/search/?api=1&query=Mussafah+Industrial+Area+Abu+Dhabi",
